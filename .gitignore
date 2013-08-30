@@ -8,6 +8,7 @@ lib-cov
 *.pid
 *.swp
 *.swo
+npm-debug.log
 benchmarks/graphs
 testing
 node_modules/
