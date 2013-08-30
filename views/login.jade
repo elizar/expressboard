@@ -2,13 +2,16 @@ extends layout
 
 block content
   h1= title
-
+  -if (flash)
+    p=flash
   form(action="" method="POST" id="signup-form")
     .credentials
       label(for="username") Username 
+        br
         input(type="text" name="username")
       br
       label(for="password") Password 
+        br
         input(type="password" name="password")
     .submit
       br

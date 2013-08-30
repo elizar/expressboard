@@ -1,25 +1,26 @@
 /**
  * Module dependencies.
  */
+'use strict';
 var express = require('express'),
     routes = require('./routes'),
     signup = require('./routes/signup'),
     login = require('./routes/login'),
     http = require('http'),
-    path = require('path'),
+    path = require('path');
     
-    /** DB STUFFS **/
-    mongoose = require('mongoose');
-    mongoose.connect('mongodb://localhost/project'),
-    mongooseModels = require('./lib/models').init(),
+/** DB STUFFS **/
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/project');
+var mongooseModels = require('./lib/models').init(),
     User = mongooseModels.User;
     
-    /** PASSPORT STUFFS **/
-    passport = require('passport'),
-    passportLocal = require('passport-local').Strategy,
+/** PASSPORT STUFFS **/
+var passport = require('passport'),
+    passportLocal = require('passport-local').Strategy;
 
-    /** INIT APP **/
-    app = express();
+/** INIT APP **/
+var app = express();
 
 // Setup passport local strategy
 // Note: you can check if user is login by checking req.user
@@ -94,5 +95,5 @@ app.post('/login', login.post);
 
 /** RUN OUR SERVER **/
 http.createServer(app).listen(app.get('port'), function() {
-    console.log("Express server listening on port " + app.get('port'));
+    console.log('Express server listening on port ' + app.get('port'));
 });
