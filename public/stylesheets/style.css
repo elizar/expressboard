@@ -1,0 +1,25 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+input {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+input[type="text"], input[type="password"] {
+  padding: 4px;
+  width: 200px;
+  outline: none;
+}
+input[type="submit"] {
+  padding: 8px;
+  width: 100px;
+  border: 1px solid gray;
+  display: block;
+}

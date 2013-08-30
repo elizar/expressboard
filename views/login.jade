@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+
+  form(action="" method="POST" id="signup-form")
+    .credentials
+      label(for="username") Username 
+        input(type="text" name="username")
+      br
+      label(for="password") Password 
+        input(type="password" name="password")
+    .submit
+      br
+      input(type="submit" value="Sign Up")
