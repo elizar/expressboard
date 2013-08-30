@@ -1,25 +1,30 @@
 /**
  * Module dependencies.
  */
-
 var express = require('express'),
     routes = require('./routes'),
     signup = require('./routes/signup'),
     login = require('./routes/login'),
     http = require('http'),
-    passport = require('passport'),
-    local = require('passport-local').Strategy,
     path = require('path'),
+    
+    /** DB STUFFS **/
     mongoose = require('mongoose');
     mongoose.connect('mongodb://localhost/project'),
-    models = require('./models');
+    mongooseModels = require('./lib/models').init(),
+    User = mongooseModels.User;
+    
+    /** PASSPORT STUFFS **/
+    passport = require('passport'),
+    passportLocal = require('passport-local').Strategy,
 
-var User = models.user(mongoose);
+    /** INIT APP **/
+    app = express();
 
-
-var app = express();
-
-passport.use(new local(
+// Setup passport local strategy
+// Note: you can check if user is login by checking req.user
+// e.g: if(!req.user) res.redirect('/not-login') else res.redirect('/welcome-page')
+passport.use(new passportLocal(
     function(username, password, done) {
         User.findOne({
             username: username
@@ -42,10 +47,12 @@ passport.use(new local(
         });
     }
 ));
+
+//  Passport won't work without the following two methods 
+//  if Session is enabled
 passport.serializeUser(function(user, done) {
     done(null, user.id);
 });
-
 passport.deserializeUser(function(id, done) {
     User.findById(id, function(err, user) {
         done(err, user);
@@ -60,7 +67,7 @@ app.configure(function() {
     app.use(express.logger('dev'));
     app.use(express.bodyParser());
     app.use(express.methodOverride());
-    app.use(express.cookieParser('your secret here'));
+    app.use(express.cookieParser());
     app.use(express.session({
         secret: 'beepboop'
     }));
@@ -73,18 +80,19 @@ app.configure(function() {
 app.configure('development', function() {
     app.use(express.errorHandler());
 });
-/* index routes */
-app.get('/', routes.index);
 
-/* signup routes */
-app.get('/signup', signup.index);
+// INDEX routes
+app.get('/', routes.get);
+
+// SIGNUP routes
+app.get('/signup', signup.get);
 app.post('/signup', signup.post);
 
-/* login routes */
-app.get('/login', login.index);
+// LOGIN routes
+app.get('/login', login.get);
 app.post('/login', login.post);
 
-
+/** RUN OUR SERVER **/
 http.createServer(app).listen(app.get('port'), function() {
     console.log("Express server listening on port " + app.get('port'));
 });
