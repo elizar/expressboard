@@ -7,7 +7,8 @@ var express = require('express'),
     signup = require('./routes/signup'),
     login = require('./routes/login'),
     http = require('http'),
-    path = require('path');
+    path = require('path'),
+    flash = require('connect-flash');
     
 /** DB STUFFS **/
 var mongoose = require('mongoose');
@@ -74,6 +75,7 @@ app.configure(function() {
     }));
     app.use(passport.initialize());
     app.use(passport.session());
+    app.use(flash());
     app.use(app.router);
     app.use(express.static(path.join(__dirname, 'public')));
 });

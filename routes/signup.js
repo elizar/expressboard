@@ -7,15 +7,19 @@ var mongoose = require('mongoose'),
 
 exports.get = function(req, res) {
     res.render('signup', {
-        title: 'Signup'
+        title: 'Signup',
+        errorFlash: req.flash('error')
     });
 };
 exports.post = function(req, res) {
     var u = new models.User(req.body);
     u.save(function(err, user) {
 			if (err) {
-				return res.end(JSON.stringify(err));
+				req.flash('error', err);
+				res.redirect('/signup');
+				return;
 			}
-			res.end(JSON.stringify(user));
+			req.flash('info', 'Thanks for signing up '+user.email+'! You may now login.');
+			res.redirect('/login');
 		});
 };

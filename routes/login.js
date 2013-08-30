@@ -6,7 +6,8 @@ exports.get = function(req, res) {
         return;
     }
     res.render('login', {
-        title: 'User Login'
+        title: 'User Login',
+        errorFlash: req.flash('error'),
     });
 };
 exports.post = function(req, res, next) {
@@ -17,7 +18,6 @@ exports.post = function(req, res, next) {
     passport.authenticate('local', {
         successRedirect: '/',
         failureRedirect: '/login',
-        failureFlash: 'Invalid Username or Password',
-        successFlash: 'Welcome!'
+        failureFlash: 'Wrong Username or Password',
     })(req, res, next);
 };

@@ -24,3 +24,11 @@ input[type="submit"] {
     border: 1px solid gray;
     display: block;
 }
+input.error {
+  border-color: #ffaaaa;
+  color: inherit;
+}
+
+.error {
+  color: red;
+}

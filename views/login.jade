@@ -2,8 +2,8 @@ extends layout
 
 block content
   h1= title
-  -if (flash)
-    p=flash
+  -if (errorFlash && errorFlash.length > 0)
+    p.error=errorFlash[0]
   form(action="" method="POST" id="signup-form")
     .credentials
       label(for="username") Username 
@@ -15,4 +15,4 @@ block content
         input(type="password" name="password")
     .submit
       br
-      input(type="submit" value="Sign Up")
+      input(type="submit" value="Login")

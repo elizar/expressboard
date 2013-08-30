@@ -2,19 +2,24 @@ extends layout
 
 block content
   h1= title
-
+  -if (errorFlash.length > 0)
+    p.error Signup Error!
+    -var err = errorFlash[0].errors
   form(action="" method="POST" id="signup-form")
     .credentials
       label(for="username")  Choose a username
         br
-        input(type="text" name="username")
+      -var cls = (err && err.username) ? 'error' : ''
+        input(type="text" name="username" class=cls)
       br
       label(for="email")  Enter your email
         br
-        input(type="text" name="email")
+      -var cls = (err && err.email) ? 'error' : ''
+        input(type="text" name="email" class=cls)
       br
       label(for="password") Choose a password
         br
-        input(type="password" name="password")
+      -var cls = (err && err.password) ? 'error' : ''
+        input(type="password" name="password" class=cls)
       br  
       input(type="submit" value="Sign Up")
