@@ -9,13 +9,13 @@ var express = require('express'),
     http = require('http'),
     path = require('path'),
     flash = require('connect-flash');
-    
+
 /** DB STUFFS **/
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/project');
 var mongooseModels = require('./lib/models').init(),
     User = mongooseModels.User;
-    
+
 /** PASSPORT STUFFS **/
 var passport = require('passport'),
     passportLocal = require('passport-local').Strategy;
