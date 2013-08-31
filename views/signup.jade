@@ -2,24 +2,45 @@ extends layout
 
 block content
   h1= title
+  h3= subTitle
+  hr
   -if (errorFlash.length > 0)
-    p.error Signup Error!
+    h3.error Sign Up Problem! Please try again.
     -var err = errorFlash[0].errors
+  -if (infoFlash && infoFlash.length > 0)
+    p.success=infoFlash[0]
+    br
   form(action="" method="POST" id="signup-form")
     .credentials
-      label(for="username")  Choose a username
+      label(for="username")  Choose a Username
+        br
+        small
+          em
+            | must be at 5 - 20 characters long
         br
       -var cls = (err && err.username) ? 'error' : ''
         input(type="text" name="username" class=cls)
       br
-      label(for="email")  Enter your email
+      label(for="email")  Enter Your Email Address
+        br
+        small
+          em
+            | i.e: email@domain.com
         br
       -var cls = (err && err.email) ? 'error' : ''
         input(type="text" name="email" class=cls)
       br
       label(for="password") Choose a password
         br
+        small
+          em
+            | at least 6 - 20 characters long
+        br
       -var cls = (err && err.password) ? 'error' : ''
         input(type="password" name="password" class=cls)
-      br  
-      input(type="submit" value="Sign Up")
+      br
+      small.login Already have an account ?  
+        a(href="/login") SIGN IN
+      br
+      br
+      input(type="submit" value="Sign Up Now!")

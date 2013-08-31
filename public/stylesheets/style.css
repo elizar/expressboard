@@ -1,18 +1,30 @@
 body {
-    padding: 50px;
     font: 14px"Lucida Grande", Helvetica, Arial, sans-serif;
 }
+hr {
+  height: 1px;
+  border: none;
+  background-color: #ccc;
+  margin-bottom: 2em;
+  margin-top: 2em;
+}
 a {
-    color: #00B7FF;
+    color: blue;
+    text-decoration: none;
+}
+a:hover {
+  color: darkblue;
+  text-decoration: underline;
 }
 input {
     font-size: 14px;
     margin-bottom: 10px;
     border: 1px solid #aaa;
+    margin-top: .5em;
 }
 input:focus {
   outline: none;
-  border: 1px solid #333;
+  border: 1px solid #000;
 }
 input[type="text"], input[type="password"] {
     padding: 4px;
@@ -20,15 +32,39 @@ input[type="text"], input[type="password"] {
 }
 input[type="submit"] {
     padding: 8px;
-    width: 100px;
+    min-width: 100px;
     border: 1px solid gray;
     display: block;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: #efefef;
+    outline:2px solid #efefef;
+}
+input[type="submit"]:hover {
+  background-color: #aaa;
 }
 input.error {
   border-color: #ffaaaa;
   color: inherit;
 }
-
+label {
+  font-weight: bold;
+}
+label small {
+  font-weight: normal;
+  color: #aaa;
+}
+h3.error {
+  padding: 10px;
+  border: 1px solid #ffaaaa;
+}
 .error {
   color: red;
+  background-color: #ffeeee;
+}
+.success {
+  color: darkgreen;
+  border: 1px solid green;
+  background-color: lightgreen;
+  padding: 10px;
 }

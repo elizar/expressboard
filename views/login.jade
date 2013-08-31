@@ -2,17 +2,27 @@ extends layout
 
 block content
   h1= title
+  h3= subTitle
+  hr
+  -var cls = ''
   -if (errorFlash && errorFlash.length > 0)
-    p.error=errorFlash[0]
+    h3.error=errorFlash[0]
+    -cls = 'error'
+  -if (infoFlash && infoFlash.length > 0)
+    p.success=infoFlash[0]
   form(action="" method="POST" id="signup-form")
     .credentials
       label(for="username") Username 
         br
-        input(type="text" name="username")
+        input(type="text" name="username" class=cls)
       br
       label(for="password") Password 
         br
-        input(type="password" name="password")
+        input(type="password" name="password" class=cls)
+    small.forgot 
+      a(href="/login/password-reset") Forgot your password ? 
+      span |  
+      a(href="/signup") SIGN UP
     .submit
       br
       input(type="submit" value="Login")

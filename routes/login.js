@@ -7,7 +7,9 @@ exports.get = function(req, res) {
     }
     res.render('login', {
         title: 'User Login',
+        subTitle: 'Login to post, comment, and troll arround',
         errorFlash: req.flash('error'),
+        infoFlash: req.flash('info'),
     });
 };
 exports.post = function(req, res, next) {

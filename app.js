@@ -93,9 +93,18 @@ app.post('/signup', signup.post);
 
 // LOGIN routes
 app.get('/login', login.get);
+app.get('/login/password-reset', function(req,res) {
+    res.end('Not My Problem!');
+});
 app.post('/login', login.post);
 
-/** RUN OUR SERVER **/
+// LOGOUT
+app.get('/logout', function(req, res){
+	req.logout();
+	res.redirect('/');
+});
+
+/** START HTTP SERVER **/
 http.createServer(app).listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));
 });

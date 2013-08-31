@@ -2,4 +2,11 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{!user? title : user.email}
+  p Welcome to #{!user? title : user.email}! Mao kani ang forum sa mga palahubog!
+  -if (!user)
+    a(href="/signup") Create New Account 
+    | | 
+    a(href="/login") Sign In 
+  -else
+    a(href="/logout") Logout
+
