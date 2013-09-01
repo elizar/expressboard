@@ -6,6 +6,7 @@ var express = require('express'),
     routes = require('./routes'),
     signup = require('./routes/signup'),
     login = require('./routes/login'),
+    board = require('./routes/board'),
     http = require('http'),
     path = require('path'),
     flash = require('connect-flash');
@@ -36,19 +37,18 @@ passport.use(new passportLocal(
             }
             if (!user) {
                 return done(null, false, {
-                    message: 'Incorrect username.'
+                    message: 'Incorrect username or password.'
                 });
             }
             if (!user.validPassword(password)) {
                 return done(null, false, {
-                    message: 'Incorrect password.'
+                    message: 'Incorrect username or password.'
                 });
             }
             console.log('user');
             return done(null, user);
         });
-    }
-));
+    }));
 
 //  Passport won't work without the following two methods 
 //  if Session is enabled
@@ -93,16 +93,23 @@ app.post('/signup', signup.post);
 
 // LOGIN routes
 app.get('/login', login.get);
-app.get('/login/password-reset', function(req,res) {
+app.get('/login/password-reset', function(req, res) {
     res.end('Not My Problem!');
 });
 app.post('/login', login.post);
 
 // LOGOUT
-app.get('/logout', function(req, res){
-	req.logout();
-	res.redirect('/');
+app.get('/logout', function(req, res) {
+    req.logout();
+    res.redirect('/');
 });
+
+// BOARD
+app.get('/board', board.get);
+app.get('/board/create', board.create);
+app.post('/board/create', board.createpost);
+
+app.get('/:notfound', routes.notfound);
 
 /** START HTTP SERVER **/
 http.createServer(app).listen(app.get('port'), function() {

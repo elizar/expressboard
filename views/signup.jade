@@ -1,46 +1,62 @@
 extends layout
 
 block content
-  h1= title
-  h3= subTitle
-  hr
-  -if (errorFlash.length > 0)
-    h3.error Sign Up Problem! Please try again.
-    -var err = errorFlash[0].errors
-  -if (infoFlash && infoFlash.length > 0)
-    p.success=infoFlash[0]
-    br
-  form(action="" method="POST" id="signup-form")
-    .credentials
-      label(for="username")  Choose a Username
-        br
-        small
-          em
-            | must be at 5 - 20 characters long
-        br
-      -var cls = (err && err.username) ? 'error' : ''
-        input(type="text" name="username" class=cls)
-      br
-      label(for="email")  Enter Your Email Address
-        br
-        small
-          em
-            | i.e: email@domain.com
-        br
-      -var cls = (err && err.email) ? 'error' : ''
-        input(type="text" name="email" class=cls)
-      br
-      label(for="password") Choose a password
-        br
-        small
-          em
-            | at least 6 - 20 characters long
-        br
-      -var cls = (err && err.password) ? 'error' : ''
-        input(type="password" name="password" class=cls)
-      br
-      small.login Already have an account ?  
-        a(href="/login") SIGN IN
-      br
-      br
-      input(type="submit" value="Sign Up Now!")
+  #container.container
+    -if (!user)
+      .left.span6
+        .welcome-home
+          h2 Other Options
+          p.sub Sign Up with third pary web services
+          hr
+          a(href="#")
+            h3 Google+
+          br
+          a(href="#")
+            h3 Facebook
+          br
+          a(href="#")
+            h3 Twitter
+          br
+          a(href="#")
+            h3 OpenID
+          br
+      .right.span6
+        .signup-home
+          h2 Sign Up
+          -if (errorFlash.length > 0)
+            -if (errorFlash[0].name === 'MongoError')
+              -var errUsername='error'
+              -var errEmail='error'
+              -var errPassword='error'
+              br
+              p.error Username or Email is taken.
+            -else
+              -if (errorFlash[0].errors.username)
+                -var errUsername='error'
+              -if (errorFlash[0].errors.email)
+                -var errEmail='error'
+              -if (errorFlash[0].errors.password)
+                -var errPassword='error'
+                br
+                p.error Sign Up Problem! Review all the fields in red and try again.
+            -var err = errorFlash[0].errors
+          hr
+          form(action="/signup" method="POST" id="signup-form")
+            .credentials
+              label(for="username")  Choose a username
+                br
+                input(type="text" name="username" class=errUsername placeholder="i.e: beepboop")
+              br
+              label(for="email")  Enter Your Email Address
+                br
+                input(type="text" name="email" class=errEmail placeholder="me@you.com")
+              br
+              label(for="password") Choose a password
+                br
+                input(type="password" name="password" class=errPassword placeholder="at least 6 characters long")
+              br
+              small.login Already have an account ? You can 
+                a(href="/login") <strong>Log In Here</strong>
+              br
+              br
+              input(type="submit" value="Sign Up Now!")

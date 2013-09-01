@@ -1,12 +1,39 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{!user? title : user.email}! Mao kani ang forum sa mga palahubog!
-  -if (!user)
-    a(href="/signup") Create New Account 
-    | | 
-    a(href="/login") Sign In 
-  -else
-    a(href="/logout") Logout
+
+  #content.container
+    -if (!user)
+      .left.span6
+        .welcome-home
+          h2 Welcome!
+          h4.sub Express Board is a new way to share your thoughts to your friends, families and colleagues.
+          p Fork me on <a href="http://github.com/elizar/">github</a>
+      .right.span6
+        .signup-home
+          h2 Don't have an account yet?
+          h4.sub Sign up now it's free!
+          hr
+          form(action="/signup" method="POST" id="signup-form")
+            .credentials
+              label(for="username")  Choose a username
+                br
+              -var cls = (err && err.username) ? 'error' : ''
+                input(type="text" name="username" class=cls placeholder="i.e: beepboop")
+              br
+              label(for="email")  Enter Your Email Address
+                br
+              -var cls = (err && err.email) ? 'error' : ''
+                input(type="text" name="email" class=cls placeholder="me@you.com")
+              br
+              label(for="password") Choose a password
+                br
+              -var cls = (err && err.password) ? 'error' : ''
+                input(type="password" name="password" class=cls placeholder="at least 6 characters long")
+              br
+              small.login Already have an account ? You can 
+                a(href="/login") <strong>Log In Here</strong>
+              br
+              br
+              input(type="submit" value="Sign Up Now!")
 

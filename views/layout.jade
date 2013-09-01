@@ -1,7 +1,27 @@
 doctype 5
 html
   head
-    title= title
+    title=' Express Board | '+ title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
+    header.container
+      .left
+        .logo
+          h1 
+            a(href="/") [eb]
+          p.sub Express Board <strong>1.0</strong>
+      .right
+        nav.nav Welcome #{!user? 'Guest' : user.email} 
+          if (!user)
+            a(href="/signup") Sign Up
+            | | 
+            a(href="/login") Log In
+          else
+            a(href="/board") Board
+            span  | 
+            a(href="/profile") User Profile
+            span  | 
+            a(href="/logout") Log Out
     block content
+  #footer 
+    p &copy; 2013 - 2014 <a href="http://elizarpepino.com">Elizar Pepino</a>. All rights reserved.

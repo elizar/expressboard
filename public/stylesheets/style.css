@@ -1,20 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+}
 body {
-    font: 14px"Lucida Grande", Helvetica, Arial, sans-serif;
+    font: normal 95%/150%"Lucida Grande", Helvetica, Arial, sans-serif;
+    background-color: #efefef;
+}
+p, h1, h2, h3, h4 {
+    line-height: 1.5em;
+}
+header.container p {
+    margin-top: 1em;
+}
+header.container a {
+    color: #444;
+    padding: 4px 10px;
 }
 hr {
-  height: 1px;
-  border: none;
-  background-color: #ccc;
-  margin-bottom: 2em;
-  margin-top: 2em;
+    height: 1px;
+    border: none;
+    background-color: #ccc;
+    margin-bottom: 1em;
+    margin-top: 1em;
 }
 a {
     color: blue;
     text-decoration: none;
 }
 a:hover {
-  color: darkblue;
-  text-decoration: underline;
+    color: darkblue;
+    text-decoration: underline;
+}
+textarea {
+    width: 400px;
+    font-size: 14px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #aaa;
+    margin-top: .5em;
 }
 input {
     font-size: 14px;
@@ -23,48 +48,159 @@ input {
     margin-top: .5em;
 }
 input:focus {
-  outline: none;
-  border: 1px solid #000;
+    outline: none;
+    border: 1px solid blue;
 }
 input[type="text"], input[type="password"] {
-    padding: 4px;
-    width: 200px;
+    padding: 10px;
+    width: 300px;
 }
 input[type="submit"] {
-    padding: 8px;
+    padding: 12px;
     min-width: 100px;
-    border: 1px solid gray;
+    border: 1px solid blue;
     display: block;
+    color: blue;
     cursor: pointer;
     font-weight: bold;
-    background-color: #efefef;
+    background-color: #eeeeff;
     outline:2px solid #efefef;
 }
 input[type="submit"]:hover {
-  background-color: #aaa;
+    background-color: #ccccff;
 }
 input.error {
-  border-color: #ffaaaa;
-  color: inherit;
+    border-color: #ffaaaa;
+    background-color: transparent;
+    color: inherit;
 }
 label {
-  font-weight: bold;
+    font-weight: bold;
 }
 label small {
-  font-weight: normal;
-  color: #aaa;
+    font-weight: normal;
+    color: #aaa;
 }
 h3.error {
-  padding: 10px;
-  border: 1px solid #ffaaaa;
+    padding: 10px;
+    border: 1px solid #ffaaaa;
+}
+header.container {
+    padding-bottom: 1.5em;
+    background-color: #eeeeff;
+    border-bottom: 1px solid #aaa;
 }
 .error {
-  color: red;
-  background-color: #ffeeee;
+    border: 1px solid #ffaaaa;
+    color: red;
+    background-color: #ffeeee;
+    padding: 10px;
 }
 .success {
-  color: darkgreen;
-  border: 1px solid green;
-  background-color: lightgreen;
-  padding: 10px;
+    color: darkgreen;
+    border: 1px solid green;
+    background-color: lightgreen;
+    padding: 10px;
+}
+.container {
+    width: 100%;
+    position: relative;
+    overflow: auto;
+    text-align: left;
+    background-color: #fff;
+}
+#container.container a {
+    margin: 0px 10px;
+}
+.left {
+    position: relative;
+    float: left;
+}
+.right {
+    position: relative;
+    float: right;
+}
+.sub {
+    color: #666;
+}
+.latest-thread, .signup-home {
+    border-left: 1px dashed #aaa;
+    padding: 20px;
+}
+.welcome-home {
+    padding: 30px;
+}
+#footer {
+    padding-top: 1em;
+    padding-left: 30px;
+    border-top: 1px solid #aaa;
+}
+#footer p {
+    color: #aaa;
+}
+#footer a {
+    font-weight: bold;
+    color: #999;
+}
+.nav {
+    margin-top: 35px;
+    margin-right: 10px
+}
+.logo {
+    margin-top: 10px;
+    margin-left: 30px;
+}
+.logo a {
+    color: #333;
+}
+.logo a:hover {
+    text-decoration: none;
+    color: #000;
+}
+.nav a {
+    margin: 10px;
+}
+.content {
+    margin: 30px;
+    padding-bottom: 1em;
+}
+.threads {
+    margin-left: 20px;
+}
+.threads .thread {
+    margin-bottom: 10px;
+}
+/** SPAN **/
+ .span12 {
+    width: 100%;
+}
+.span10 {
+    width: 83%;
+}
+.span9 {
+    width: 75%;
+}
+.span8 {
+    width: 66%;
+}
+.span7 {
+    width: 58%;
+}
+.span6 {
+    width: 50%;
+}
+.span5 {
+    width: 41%;
+}
+.span4 {
+    width: 33%;
+}
+.span3 {
+    width: 25%;
+}
+.span2 {
+    width: 16%;
+}
+.span1 {
+    width: 8%;
 }

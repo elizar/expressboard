@@ -1,0 +1,23 @@
+extends ../layout
+
+block content
+  #container.container
+    .content
+      .left
+        h2 There are currrently <strong> #{threads.length} </strong> threads in this board.
+      .right
+        p
+          a(href="/board/create") Create New  
+          |
+          a(href="/board/mine")  Show Mine Only
+    .content
+      hr
+      -if (infoFlash && infoFlash.length > 0)
+        p.success=infoFlash[0]
+      ul.threads
+        -var i = threads.length
+        -while(i--)
+          li.thread 
+            h4
+              a(href="/board/" + threads[i]._id) #{threads[i].title}
+
