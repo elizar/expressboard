@@ -6,7 +6,7 @@ var express = require('express'),
     routes = require('./routes'),
     signup = require('./routes/signup'),
     login = require('./routes/login'),
-    board = require('./routes/board'),
+    threads = require('./routes/threads'),
     http = require('http'),
     path = require('path'),
     flash = require('connect-flash');
@@ -45,7 +45,6 @@ passport.use(new passportLocal(
                     message: 'Incorrect username or password.'
                 });
             }
-            console.log('user');
             return done(null, user);
         });
     }));
@@ -83,31 +82,38 @@ app.configure('development', function() {
     app.use(express.errorHandler());
 });
 
-// INDEX routes
+/********************
+ *   Routes Galore
+ ********************/
+
+// Index routes
 app.get('/', routes.get);
 
-// SIGNUP routes
+// Signup routes
 app.get('/signup', signup.get);
 app.post('/signup', signup.post);
 
-// LOGIN routes
+// Login routes
 app.get('/login', login.get);
 app.get('/login/password-reset', function(req, res) {
-    res.end('Not My Problem!');
+    res.end('Not My Problem!'); // Humour me!
 });
 app.post('/login', login.post);
 
-// LOGOUT
+// Logout routes
 app.get('/logout', function(req, res) {
     req.logout();
     res.redirect('/login');
 });
 
-// BOARD
-app.get('/board', board.get);
-app.get('/board/new', board.new);
-app.post('/board/new', board.newpost);
+// Board routes
+app.get('/threads', threads.get);
+app.get('/threads/:page', threads.get);
+// app.get('/threads/:thread', threads.single);
+app.get('/threads/new', threads.new);
+app.post('/threads/new', threads.newpost);
 
+// Catch not found page with wildcard route
 app.get('/:notfound', routes.notfound);
 
 /** START HTTP SERVER **/

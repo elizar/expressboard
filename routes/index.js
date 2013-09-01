@@ -4,7 +4,7 @@
 'use strict';
 exports.get = function(req, res) {
     if (req.user) {
-        res.redirect('/board');
+        res.redirect('/threads');
     }
     res.render('index', {
         title: 'Home',

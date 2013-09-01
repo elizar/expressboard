@@ -152,15 +152,19 @@ header.container {
 }
 .footer {
     padding-top: 1em;
+    padding-bottom: 3em;
     padding-left: 30px;
     border-top: 1px solid #aaa;
 }
 .footer p {
-    color: #aaa;
+    color: #111;
+    font-size: .9em;
 }
 .footer a {
     font-weight: bold;
-    color: #999;
+    color: #333;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 .logo {
     margin-top: 10px;
@@ -184,10 +188,10 @@ header.container {
     margin: 30px;
     padding-bottom: 1em;
 }
-.threads {
+.threads, .posts {
     margin-left: 20px;
 }
-.threads .thread {
+.threads .thread, .posts .post {
     margin-bottom: 10px;
 }
 /** SPAN **/

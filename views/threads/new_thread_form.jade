@@ -3,12 +3,17 @@ extends ../layout
 block content
 	#container.container
 		.content
-			h2 New Thread
+			.left
+				h2 Create New Thread
+			.right
+				.menu
+					a(href="/threads") Go Back
+		.content
 			hr
 			-if (errorFlash && errorFlash.length > 0)
-				p.error Can't save that shit! Please try again.
+				p.error Ohh Snap! Something is wrong, please try again.
 				br
-			form(action="/board/new" method="POST" id="signup-form")
+			form(action="/threads/new" method="POST" id="signup-form")
 				label(for="title") Choose a Title<br />
 				input(type="text", name="title")
 				label(for="description") <br />Write a description<br />
