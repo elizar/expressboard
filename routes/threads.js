@@ -92,9 +92,6 @@ exports.newpost = function(req, res) {
         };
         var p = new models.Post(postData);
         p.save(function(err, post) {
-            if (err) {
-                req.flash('error', err);
-            }
             // Update users' threads sub documents
             req.user.updateThreads(thread._id);
             // Update user's posts sub documents
