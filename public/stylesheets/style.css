@@ -6,17 +6,27 @@
 }
 body {
     font: normal 95%/150%"Lucida Grande", Helvetica, Arial, sans-serif;
+    font-size: 14px;
     background-color: #efefef;
 }
-p, h1, h2, h3, h4 {
+p{
     line-height: 1.5em;
 }
-header.container p {
-    margin-top: 1em;
+h1, h2, h3 {
+    opacity: 0.7;
+    line-height: 1.5em;
+    font-family: "Trykker", "Lucida Grande";
 }
-header.container a {
-    color: #444;
-    padding: 4px 10px;
+nav {
+    color: #333111;
+}
+nav a {
+    text-decoration: underline;
+    color: #5555ff;
+    padding: 4px 5px;
+}
+nav a:hover {
+    color: #555;
 }
 hr {
     height: 1px;
@@ -35,21 +45,19 @@ a:hover {
 }
 textarea {
     width: 400px;
-    font-size: 14px;
     padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #aaa;
-    margin-top: .5em;
 }
-input {
+input, textarea {
     font-size: 14px;
     margin-bottom: 10px;
     border: 1px solid #aaa;
     margin-top: .5em;
+    box-shadow: 0 2px 5px #efefef inset;
 }
-input:focus {
+input:focus, textarea:focus {
     outline: none;
     border: 1px solid blue;
+    box-shadow: 0 2px 5px #ccc inset;
 }
 input[type="text"], input[type="password"] {
     padding: 10px;
@@ -81,10 +89,7 @@ label small {
     font-weight: normal;
     color: #aaa;
 }
-h3.error {
-    padding: 10px;
-    border: 1px solid #ffaaaa;
-}
+
 header.container {
     padding-bottom: 1.5em;
     background-color: #eeeeff;
@@ -109,9 +114,6 @@ header.container {
     text-align: left;
     background-color: #fff;
 }
-#container.container a {
-    margin: 0px 10px;
-}
 .left {
     position: relative;
     float: left;
@@ -119,6 +121,21 @@ header.container {
 .right {
     position: relative;
     float: right;
+}
+.menu a {
+    padding: 4px 5px;
+    color: #777;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.menu a:hover {
+    color: #111;
+    text-decoration: none;
+}
+.menu a.active {
+    color: #111;
+    background-color: #cceecc;
+    border-bottom: 1px solid #aaa;
 }
 .sub {
     color: #666;
@@ -130,15 +147,15 @@ header.container {
 .welcome-home {
     padding: 30px;
 }
-#footer {
+.footer {
     padding-top: 1em;
     padding-left: 30px;
     border-top: 1px solid #aaa;
 }
-#footer p {
+.footer p {
     color: #aaa;
 }
-#footer a {
+.footer a {
     font-weight: bold;
     color: #999;
 }

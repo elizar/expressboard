@@ -65,7 +65,6 @@ app.configure(function() {
     app.set('port', process.env.PORT || 3000);
     app.set('views', __dirname + '/views');
     app.set('view engine', 'jade');
-    app.use(express.favicon());
     app.use(express.logger('dev'));
     app.use(express.bodyParser());
     app.use(express.methodOverride());
@@ -101,13 +100,13 @@ app.post('/login', login.post);
 // LOGOUT
 app.get('/logout', function(req, res) {
     req.logout();
-    res.redirect('/');
+    res.redirect('/login');
 });
 
 // BOARD
 app.get('/board', board.get);
-app.get('/board/create', board.create);
-app.post('/board/create', board.createpost);
+app.get('/board/new', board.new);
+app.post('/board/new', board.newpost);
 
 app.get('/:notfound', routes.notfound);
 

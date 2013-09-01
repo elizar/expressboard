@@ -2,14 +2,16 @@ doctype 5
 html
   head
     title=' Express Board | '+ title
+    link(rel='icon', type="image/ico", href='/images/favicon.ico')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(href='http://fonts.googleapis.com/css?family=Trykker', rel='stylesheet', type='text/css')
   body
     header.container
       .left
         .logo
           h1 
-            a(href="/") [eb]
-          p.sub Express Board <strong>1.0</strong>
+            a(href="/") Express Board
+          span.sub An awesome message board.
       .right
         nav.nav Welcome #{!user? 'Guest' : user.email} 
           if (!user)
@@ -17,11 +19,12 @@ html
             | | 
             a(href="/login") Log In
           else
-            a(href="/board") Board
-            span  | 
+            span.sub   
+            a(href="/board") Board Page
+            span.sub  / 
             a(href="/profile") User Profile
-            span  | 
+            span.sub  / 
             a(href="/logout") Log Out
     block content
-  #footer 
+  #footer.footer
     p &copy; 2013 - 2014 <a href="http://elizarpepino.com">Elizar Pepino</a>. All rights reserved.

@@ -7,9 +7,9 @@ block content
         h2 There are currrently <strong> #{threads.length} </strong> threads in this board.
       .right
         .menu
-          a.active(href="/board/")  My Threads 
+          a(href="/board/")  My Threads 
           span | 
-          a(href="/board/all") Show All  
+          a.active(href="/board/all") Show All  
           span |
           a(href="/board/new")  Create New  
     .content
@@ -25,7 +25,4 @@ block content
           li.thread 
             h4
               a(href="/board/" + threads[i].slug) #{threads[i].title}
-            -var date = threads[i].createdAt.toLocaleDateString()
-            -var postsCount = threads[i].posts.length
-            small.sub <em>Published On</em>: <strong>#{date}</strong>  |  <em>Numer of Posts</em>: <strong>#{postsCount}</strong>
 
