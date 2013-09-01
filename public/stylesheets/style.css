@@ -12,7 +12,7 @@ body {
 p{
     line-height: 1.5em;
 }
-h1, h2, h3 {
+h1, h2, h3, h4 {
     opacity: 0.7;
     line-height: 1.5em;
     font-family: "Trykker", "Lucida Grande";
@@ -151,7 +151,7 @@ header.container {
     padding: 30px;
 }
 .footer {
-    padding-top: 1em;
+    padding-top: 3em;
     padding-bottom: 3em;
     padding-left: 30px;
     border-top: 1px solid #aaa;
@@ -188,11 +188,32 @@ header.container {
     margin: 30px;
     padding-bottom: 1em;
 }
-.threads, .posts {
-    margin-left: 20px;
-}
 .threads .thread, .posts .post {
     margin-bottom: 10px;
+    padding-left: 20px;
+}
+.threads .thread {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1em;
+}
+.posts {
+    margin: 0;
+    font-size: 13px;
+    list-style-type: none;
+}
+.posts .post {
+    margin-top: 1em;
+    padding-bottom: 1em;
+    border-bottom: 1px solid #eee;
+}
+.posts hr {
+    background-color: #eee;
+}
+.posts a {
+    color: blue;
+}
+.posts p.sub {
+    margin-top: 2em;
 }
 /** SPAN **/
  .span12 {

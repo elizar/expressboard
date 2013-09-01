@@ -7,7 +7,7 @@ block content
         -if (threads.length < 1)
           h2 You currently have no thread. Click <a href="/threads/new">here</a> to add one.
         -else
-          h2 Your Own Threads <strong>( #{threads.length} </strong> )
+          h2 Your Own Threads <strong>( !{threads.length} </strong> )
       .right
         .menu
           a.active(href="/threads/")  Own Threads 
@@ -20,32 +20,31 @@ block content
       -if (infoFlash && infoFlash.length > 0)
         p.success=infoFlash[0]
         br
-      ul.threads
+      .threads
         -var i = threads.length
         -while(i--)
-          li.thread 
+          .thread 
             h3
               -var slug = url +'/'+ threads[i].slug
               -var _url = slug.replace('//', '')
-              a(href=_url) #{threads[i].title}
+              a(href=_url) !{threads[i].title}
             -var date = threads[i].createdAt.toDateString() + ' ' + threads[i].createdAt.toLocaleTimeString()
             -var postsCount = threads[i].posts.length
             -var author = threads[i].owner.username
-            small.sub <i>published : </i> <b>#{date}</b>  |  <i>posts : </i> <b>#{postsCount}</b>
+            small.sub <i>published : </i> <b>!{date}</b>  |  <i>posts : </i> <b>!{postsCount}</b>
     .content
       -if (posts.length < 1)
         h2 You currently have no posts.
         hr
       -else
-        h2 Your Thread Posts <strong>( #{posts.length} </strong> )
+        h2 Your Thread Posts <strong>( !{posts.length} </strong> )
         hr
-        ul.posts
+        .posts
           -var i = posts.length
           -while(i--)
-            li.post 
-              h3
-                -var slug = url +'/'+ posts[i].thread.slug
-                -var _url = slug.replace('//', '/')
-                a(href=_url) #{posts[i].message}
-              small.sub <i>for </i> <b>#{posts[i].thread.title}</b>
+            .post 
+              h4 !{posts[i].message.replace(/\n/g, '<br/>')}
+              -var slug = url +'/'+ threads[i].slug
+              -var _url = slug.replace('//', '')
+              p.sub Posted on <b>!{posts[i].createdAt.toLocaleDateString()}</b> in <a href=!{_url}><b>!{posts[i].thread.title}</b></a> thread.
 
