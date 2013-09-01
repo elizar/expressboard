@@ -40,7 +40,7 @@ a {
     text-decoration: none;
 }
 a:hover {
-      color: darkblue;
+    color: darkblue;
     text-decoration: underline;
 }
 textarea {
@@ -123,23 +123,25 @@ header.container {
     float: right;
 }
 .menu a {
-    padding: 4px 5px;
+    padding: 4px 10px;
     color: #777;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 3px;
+    border: 1px solid #aaa;
+    background-color: #efefef;
 }
 .menu a:hover {
     color: #111;
     text-decoration: none;
+    background-color: #ffffff;
 }
 .menu a.active {
     color: #111;
-    background-color: #cceecc;
-    border-bottom: 1px solid #aaa;
-    border-radius: 5px;
+    background-color: #ffffff;
 }
 .sub {
-    color: #666;
+    color: #999;
 }
 .latest-thread, .signup-home {
     border-left: 1px dashed #aaa;
@@ -160,10 +162,6 @@ header.container {
     font-weight: bold;
     color: #999;
 }
-.nav {
-    margin-top: 35px;
-    margin-right: 10px
-}
 .logo {
     margin-top: 10px;
     margin-left: 30px;
@@ -175,8 +173,12 @@ header.container {
     text-decoration: none;
     color: #000;
 }
+.nav {
+    margin-top: 35px;
+    margin-right: 10px
+}
 .nav a {
-    margin: 10px;
+    margin: 5px;
 }
 .content {
     margin: 30px;
