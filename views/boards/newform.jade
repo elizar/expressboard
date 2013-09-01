@@ -6,7 +6,7 @@ block content
 			h2 New Thread
 			hr
 			-if (errorFlash && errorFlash.length > 0)
-				p.error Can't save that shit! Try again.
+				p.error Can't save that shit! Please try again.
 				br
 			form(action="/board/new" method="POST" id="signup-form")
 				label(for="title") Choose a Title<br />
@@ -14,4 +14,4 @@ block content
 				label(for="description") <br />Write a description<br />
 				textarea(rows="10", name="description")
 				.submit
-					input(type="submit" value="Submit and Save")
+					input(type="submit" value="Publish This Thread")

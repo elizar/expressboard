@@ -8,6 +8,7 @@ var mongoose = require('mongoose'),
 exports.get = function(req, res) {
     if (!req.user) {
         res.redirect('/login');
+        return;
     }
     // find all threads from current logged in user
     models.Thread.find({owner: req.user._id}, function(err, tr) {
@@ -80,7 +81,7 @@ exports.newpost = function(req, res) {
             req.user.updatePosts(post._id);
         });
         req.flash('info', 'Thread successfully added!');
-        res.redirect('/board/' + t.slug);
+        res.redirect('/board');
     });
 
 };

@@ -4,7 +4,10 @@ block content
   #container.container
     .content
       .left
-        h2 There are currrently <strong> #{threads.length} </strong> threads in this board.
+        -if (threads.length < 1)
+          h2 You currently have no thread. Click <a href="/board/new">here</a> to add one.
+        -else
+          h2 You currently have <strong> #{threads.length} </strong> thread#{threads.length > 1 ? 's' : ''} 
       .right
         .menu
           a.active(href="/board/")  My Threads 

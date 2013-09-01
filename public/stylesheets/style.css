@@ -40,7 +40,7 @@ a {
     text-decoration: none;
 }
 a:hover {
-    color: darkblue;
+      color: darkblue;
     text-decoration: underline;
 }
 textarea {
@@ -136,6 +136,7 @@ header.container {
     color: #111;
     background-color: #cceecc;
     border-bottom: 1px solid #aaa;
+    border-radius: 5px;
 }
 .sub {
     color: #666;
