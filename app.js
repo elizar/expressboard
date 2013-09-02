@@ -9,11 +9,12 @@ var express = require('express'),
     threads = require('./routes/threads'),
     http = require('http'),
     path = require('path'),
-    flash = require('connect-flash');
+    flash = require('connect-flash'),
+    mongoUrl = process.env.MONGOHQL_URL || 'mongodb://localhost/kjagsd';
 
 /** DB STUFFS **/
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/kjagsd');
+mongoose.connect(mongoUrl);
 var mongooseModels = require('./lib/models').init(),
     User = mongooseModels.User;
 
