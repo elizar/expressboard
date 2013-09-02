@@ -92,7 +92,7 @@ exports.newthread = function(req, res) {
             return;
         }
         var postData = {
-            message: utils.htmlEncode(req.body.description.trim()),
+            message: req.body.description.trim(),
             owner: req.user._id,
             thread: thread._id
         };
@@ -156,13 +156,13 @@ exports.newpost = function(req, res, next) {
     }
     
     if (req.body.message.trim() === '' || req.body.message.trim().length < 10) {
-        req.flash('error', 'All fields should not be blank.');
-        res.redirect(req.url);
+        req.flash('error', 'Your post should not be blank, should be at least 10 characters long.');
+        res.redirect(req.url+'/#form');
         return;
     }
 
     var postData = {
-        message: utils.htmlEncode(req.body.message.trim()),
+        message: req.body.message.trim(),
         owner: req.user._id,
         thread: req.body._id
     };

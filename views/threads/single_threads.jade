@@ -12,18 +12,20 @@ block content
           a(href="/threads/all") All Threads 
     .content
       hr
-      -if (errorFlash && errorFlash.length > 0)
-        p.error=errorFlash[0]
-      -if (infoFlash && infoFlash.length > 0)
-        p.success=infoFlash[0]
-        br
       .posts
-        - each post in posts.reverse()
+        - each post in posts
           .post
             !{ post.message }
             - console.log(post)
             p.sub Posted on <b>!{post.createdAt.toLocaleDateString()}</b> By <b>!{post.owner.username}</b>
     .content
+      hr
+      -if (errorFlash && errorFlash.length > 0)
+        p.error=errorFlash[0]
+      -if (infoFlash && infoFlash.length > 0)
+        p.success=infoFlash[0]
+        br
+      br
       h3 Reply to this thread as - <span class="sub">@!{user.username}</span>
       br
       form(action=url, method='POST', id='form')
@@ -32,5 +34,5 @@ block content
         input(type='submit', name='submit' value='Post Reply')
 
 
-          
+
 
