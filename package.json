@@ -12,6 +12,7 @@
     "mongoose": "*",
     "passport-local": "~0.1.6",
     "passport": "~0.1.17",
-    "connect-flash": "~0.1.1"
+    "connect-flash": "~0.1.1",
+    "async": "~0.2.9"
   }
 }

@@ -190,7 +190,7 @@ header.container {
 }
 .threads .thread, .posts .post {
     margin-bottom: 10px;
-    padding-left: 20px;
+    padding-left: 10px;
 }
 .threads .thread {
     border-bottom: 1px solid #eee;
@@ -204,16 +204,21 @@ header.container {
 .posts .post {
     margin-top: 1em;
     padding-bottom: 1em;
-    border-bottom: 1px solid #eee;
+    padding-top: 1em;
+    border-bottom: 2px solid #ddd;
+    background-color: #efefef;
 }
 .posts hr {
     background-color: #eee;
 }
 .posts a {
-    color: blue;
+    color: #555;
+}
+.posts b {
+    color: #555;
 }
 .posts p.sub {
-    margin-top: 2em;
+    margin-top: 1em;
 }
 /** SPAN **/
  .span12 {

@@ -1,0 +1,36 @@
+extends ../layout
+
+block content
+  #container.container
+    .content
+      .left
+        h2 
+          small.sub @!{ thread.owner.username } - 
+          = thread.title
+      .right
+        .menu
+          a(href="/threads/all") All Threads 
+    .content
+      hr
+      -if (errorFlash && errorFlash.length > 0)
+        p.error=errorFlash[0]
+      -if (infoFlash && infoFlash.length > 0)
+        p.success=infoFlash[0]
+        br
+      .posts
+        - each post in posts.reverse()
+          .post
+            !{ post.message }
+            - console.log(post)
+            p.sub Posted on <b>!{post.createdAt.toLocaleDateString()}</b> By <b>!{post.owner.username}</b>
+    .content
+      h3 Reply to this thread as - <span class="sub">@!{user.username}</span>
+      br
+      form(action=url, method='POST', id='form')
+        input(type='hidden', value=thread._id, name='_id')
+        textarea(name='message', rows='10')
+        input(type='submit', name='submit' value='Post Reply')
+
+
+          
+

@@ -7,11 +7,11 @@ block content
         -if (threads.length < 1)
           h2 You currently have no thread. Click <a href="/threads/new">here</a> to add one.
         -else
-          h2 Your Own Threads <strong>( !{threads.length} </strong> )
+          h2 Your Own Threads <strong>( !{threads.length} )</strong>
       .right
         .menu
           a.active(href="/threads/")  Own Threads 
-          a(href="/threads/all") Everyone's Threads 
+          a(href="/threads/all") All Threads 
           a(href="/threads/new")  Create New Thread
     .content
       hr
@@ -21,30 +21,28 @@ block content
         p.success=infoFlash[0]
         br
       .threads
-        -var i = threads.length
-        -while(i--)
+        -each thread in threads.reverse()
           .thread 
-            h3
-              -var slug = url +'/'+ threads[i].slug
-              -var _url = slug.replace('//', '')
-              a(href=_url) !{threads[i].title}
-            -var date = threads[i].createdAt.toDateString() + ' ' + threads[i].createdAt.toLocaleTimeString()
-            -var postsCount = threads[i].posts.length
-            -var author = threads[i].owner.username
+            h2
+               - var slug = url +'/'+ thread.slug
+               - var _url = slug.replace('//', '/')
+               a(href=_url) !{thread.title}
+            - var date = thread.createdAt.toDateString() + ' ' + thread.createdAt.toLocaleTimeString()
+            - var postsCount = thread.posts.length
+            - var author = thread.owner.username
             small.sub <i>published : </i> <b>!{date}</b>  |  <i>posts : </i> <b>!{postsCount}</b>
     .content
       -if (posts.length < 1)
         h2 You currently have no posts.
         hr
       -else
-        h2 Your Thread Posts <strong>( !{posts.length} </strong> )
+        h2 Your Thread Posts <strong>( !{posts.length} )</strong>
         hr
         .posts
-          -var i = posts.length
-          -while(i--)
+          - each post in posts.reverse()
             .post 
-              h4 !{posts[i].message.replace(/\n/g, '<br/>')}
-              -var slug = url +'/'+ threads[i].slug
-              -var _url = slug.replace('//', '')
-              p.sub Posted on <b>!{posts[i].createdAt.toLocaleDateString()}</b> in <a href=!{_url}><b>!{posts[i].thread.title}</b></a> thread.
+              !{ post.message }
+              - var slug = url +'/'+ post.thread.slug
+              - var _url = slug.replace('//', '')
+              p.sub Posted on <b>!{post.createdAt.toLocaleDateString()}</b> in <a href=!{_url}><b>!{post.thread.title}</b></a> thread.
 

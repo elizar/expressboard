@@ -13,7 +13,7 @@ var express = require('express'),
 
 /** DB STUFFS **/
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/project');
+mongoose.connect('mongodb://localhost/kjagsd');
 var mongooseModels = require('./lib/models').init(),
     User = mongooseModels.User;
 
@@ -109,9 +109,10 @@ app.get('/logout', function(req, res) {
 // Board routes
 app.get('/threads', threads.get);
 app.get('/threads/:page', threads.get);
-// app.get('/threads/:thread', threads.single);
+app.get('/threads/:thread', threads.single);
+app.post('/threads/:thread', threads.newpost);
 app.get('/threads/new', threads.new);
-app.post('/threads/new', threads.newpost);
+app.post('/threads/new', threads.newthread);
 
 // Catch not found page with wildcard route
 app.get('/:notfound', routes.notfound);

@@ -1,7 +1,8 @@
 'use strict';
 var mongoose = require('mongoose'),
     models = mongoose.models,
-    utils = require('../lib/utils');
+    utils = require('../lib/utils'),
+    async = require('async');
 
 exports.get = function(req, res, next) {
     if (!req.user) {
@@ -18,36 +19,43 @@ exports.get = function(req, res, next) {
     var filter = {
         owner: req.user._id
     },
-        template = 'threads/own_threads';
+        template = 'threads/own_threads',
+        title = 'Own Threads';
 
     if (req.params.page === 'all') {
         filter = {};
         template = 'threads/all_threads';
+        title = 'Everyone\'s Threads';
     }
-    // fetch all threads from this user
-    models.Thread.find(filter)
-        .populate('posts')
-        .populate('owner', 'username')
-        .exec(function(err, threads) {
-            if (!err) {
-                // fetch all posts from this user
-                models.Post.find(filter)
-                    .populate('thread')
-                    .exec(function(err, posts) {
-                        if (!err) {
-                            res.render(template, {
-                                title: 'threads',
-                                url: req.url,
-                                user: req.user,
-                                threads: threads,
-                                posts: posts,
-                                errorFlash: req.flash('error'),
-                                infoFlash: req.flash('info')
-                            });
-                        }
-                    });
-            }
-        });
+    // ASYNC FTW!
+    async.series([
+        function(cb) {
+            // Get all threads from this user
+            models.Thread
+                .find(filter)
+                .populate('posts')
+                .populate('owner', 'username')
+                .exec(cb);
+        },
+        function(cb) {
+            models.Post
+                .find(filter)
+                .populate('thread')
+                .exec(cb);
+        }
+    ], function(err, results) {
+        if (!err) {
+            res.render(template, {
+                title: title,
+                url: req.url,
+                user: req.user,
+                threads: results[0],
+                posts: results[1],
+                errorFlash: req.flash('error'),
+                infoFlash: req.flash('info')
+            });
+        }
+    });
 };
 
 exports.new = function(req, res) {
@@ -64,19 +72,19 @@ exports.new = function(req, res) {
     });
 };
 
-exports.newpost = function(req, res) {
+exports.newthread = function(req, res) {
     if (!req.user) {
         res.redirect('/login');
         return;
     }
 
-    var title = req.body.title,
-        threadData = {};
+    var title = req.body.title;
+    var threadData = {};
     threadData.title = title;
     threadData.slug = title.toLowerCase().split(' ').join('-');
     threadData.owner = req.user._id;
-    var thread = new models.Thread(threadData);
 
+    var thread = new models.Thread(threadData);
     thread.save(function(err, thread) {
         if (err) {
             req.flash('error', err);
@@ -84,7 +92,7 @@ exports.newpost = function(req, res) {
             return;
         }
         var postData = {
-            message: utils.htmlEncode(req.body.description),
+            message: utils.htmlEncode(req.body.description.trim()),
             owner: req.user._id,
             thread: thread._id
         };
@@ -98,13 +106,93 @@ exports.newpost = function(req, res) {
                 // Update thread's post sub documents
                 thread.updatePosts(post._id);
                 // Update post's owner
-            } else {
-                console.log(err);
             }
-
         });
         req.flash('info', 'Thread successfully added!');
-        res.redirect('/threads');
+        res.redirect('/threads/' + thread.slug);
     });
 
+};
+
+exports.single = function(req, res, next) {
+
+    var slug = req.params.thread;
+
+    if (slug === undefined || slug === 'new') {
+        next();
+        return;
+    }
+
+    models.Thread
+        .findOne({
+            slug: slug
+        })
+        .populate('owner', 'username')
+        .exec(function(err, th) {
+            models.Post.find({
+                thread: th._id
+            })
+                .populate('owner', 'username')
+                .exec(function(err, po) {
+                    if (!err) {
+                        res.render('threads/single_threads', {
+                            title: th.title,
+                            url: req.url,
+                            user: req.user,
+                            thread: th,
+                            posts: po,
+                            errorFlash: req.flash('error'),
+                            infoFlash: req.flash('info')
+                        });
+                    }
+                });
+        });
+};
+
+exports.newpost = function(req, res, next) {
+    if (req.params.thread === 'new') {
+        next();
+        return;
+    }
+    
+    if (req.body.message.trim() === '' || req.body.message.trim().length < 10) {
+        req.flash('error', 'All fields should not be blank.');
+        res.redirect(req.url);
+        return;
+    }
+
+    var postData = {
+        message: utils.htmlEncode(req.body.message.trim()),
+        owner: req.user._id,
+        thread: req.body._id
+    };
+
+    var p = new models.Post(postData);
+    p.save(function(err, post) {
+        console.log(err);
+        if (!err) {
+            console.log(123);
+            // Update user's posts sub documents
+            req.user.updatePosts(post._id);
+            // Update thread's post sub documents
+            var thread = models.Thread.findOneAndUpdate({
+                _id: req.body._id
+            }, {
+                $push: {
+                    posts: post._id
+                }
+            }, function(err, th) {
+                if (!err) {
+                    console.log('wadiwasi');
+                    req.flash('info', 'Post successfully added!');
+                    res.redirect(req.url);
+                }
+            });
+            // Update post's owner
+        } else {
+            req.flash('error', 'Error! Please try again.');
+            res.redirect(req.url);
+            return;
+        }
+    });
 };

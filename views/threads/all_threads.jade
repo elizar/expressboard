@@ -11,7 +11,7 @@ block content
       .right
         .menu
           a(href="/threads/")  Own Threads 
-          a.active(href="/threads/all") Everyone's Threads 
+          a.active(href="/threads/all") All Threads 
           a(href="/threads/new")  Create New Thread
     .content
       hr
@@ -20,11 +20,11 @@ block content
       -if (infoFlash && infoFlash.length > 0)
         p.success=infoFlash[0]
         br
-      ul.threads
+      .threads
         -var i = threads.length
         -while(i--)
-          li.thread 
-            h3
+          .thread 
+            h2
               -var _url = href=url +'/'+ threads[i].slug
               -_url = _url.replace('/all','')
               -_url = _url.replace('//','/')
