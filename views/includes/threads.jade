@@ -3,7 +3,7 @@
     .thread 
       h2
          - var slug = url.replace('#form', '') +'/'+ thread.slug
-         - var _url = slug.replace('//', '/')
+         - var _url = slug.replace('//', '/').replace('/all','')
          a(href=_url) !{thread.title}
       - var date = thread.createdAt.toDateString() + ' ' + thread.createdAt.toLocaleTimeString()
       - var postsCount = thread.posts.length
