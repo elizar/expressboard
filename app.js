@@ -121,7 +121,7 @@ app.post('/threads/new', threads.newthread);
 
 // blitz.io related route
 app.get('/mu-39e0351c-3b288830-9fbeae27-30d8ed87', function(req, res) {
-  res.end('Beep Boop');
+  res.end('42');
 });
 // Catch not found page with wildcard route
 app.get('/:notfound', routes.notfound);
