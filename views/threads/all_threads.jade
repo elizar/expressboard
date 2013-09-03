@@ -9,10 +9,7 @@ block content
         -else
           h2 All Threads <strong>( #{threads.length} </strong> )
       .right
-        .menu
-          a(href="/threads/")  Own Threads 
-          a.active(href="/threads/all") All Threads 
-          a(href="/threads/new")  Create New Thread
+        include ../includes/menu
     .content
       hr
       -if (errorFlash && errorFlash.length > 0)
@@ -25,7 +22,7 @@ block content
         -while(i--)
           .thread 
             h2
-              -var _url = href=url +'/'+ threads[i].slug
+              -var _url = href=url.replace('#form', '') +'/'+ threads[i].slug
               -_url = _url.replace('/all','')
               -_url = _url.replace('//','/')
               a(href=_url) #{threads[i].title}

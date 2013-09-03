@@ -7,12 +7,9 @@ block content
         -if (threads.length < 1)
           h2 You currently have no thread. Click <a href="/threads/new">here</a> to add one.
         -else
-          h2 Your Own Threads <strong>( !{threads.length} )</strong>
+          h2 You have <strong>!{threads.length}</strong> threads
       .right
-        .menu
-          a.active(href="/threads/")  Own Threads 
-          a(href="/threads/all") All Threads 
-          a(href="/threads/new")  Create New Thread
+        include ../includes/menu
     .content
       hr
       -if (errorFlash && errorFlash.length > 0)
@@ -24,7 +21,7 @@ block content
         -each thread in threads.reverse()
           .thread 
             h2
-               - var slug = url +'/'+ thread.slug
+               - var slug = url.replace('#form', '') +'/'+ thread.slug
                - var _url = slug.replace('//', '/')
                a(href=_url) !{thread.title}
             - var date = thread.createdAt.toDateString() + ' ' + thread.createdAt.toLocaleTimeString()
@@ -36,13 +33,17 @@ block content
         h2 You currently have no posts.
         hr
       -else
-        h2 Your Thread Posts <strong>( !{posts.length} )</strong>
-        hr
+        h2 Your have <strong>!{posts.length}</strong> posts
+        br
         .posts
+          - var i = 0
           - each post in posts.reverse()
-            .post 
+            - var offset = (i % 2 === 0 )? 'offset' : ''
+            .post(class=offset) 
               !{ post.message }
-              - var slug = url +'/'+ post.thread.slug
-              - var _url = slug.replace('//', '')
-              p.sub Posted on <b>!{post.createdAt.toLocaleDateString()}</b> in <a href=!{_url}><b>!{post.thread.title}</b></a> thread.
+              - var slug = url.replace('#form', '') +'/'+ post.thread.slug
+              - var _url = slug.replace('//', '/')
+              - i++
+              hr
+              small.sub Posted on <b>!{post.createdAt.toLocaleDateString()}</b> in <a href=!{_url}><b>!{post.thread.title}</b></a> thread.
 

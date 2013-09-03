@@ -6,36 +6,15 @@ block content
     -if (!user)
       .left.span6
         .welcome-home
-          h2 Welcome!
+          h2 Greetings!
           br
-          h3 Express Board is a new way to share your thoughts to your friends, families and colleagues.
+          p Hello and welcome to expressboard.
           br
-          h3.sub You can fork this project on <a href="https://github.com/elizar/expressboard"><strong>github</strong></a>
+          p.sub You can fork this project on <a href="https://github.com/elizar/expressboard"><strong>github</strong></a>
       .right.span6
         .signup-home
           h2 Don't have an account yet?
           h4.sub Sign up now it's free!
           hr
-          form(action="/signup" method="POST" id="signup-form")
-            .credentials
-              label(for="username")  Choose a username
-                br
-              -var cls = (err && err.username) ? 'error' : ''
-                input(type="text" name="username" class=cls placeholder="i.e: beepboop")
-              br
-              label(for="email")  Enter Your Email Address
-                br
-              -var cls = (err && err.email) ? 'error' : ''
-                input(type="text" name="email" class=cls placeholder="me@you.com")
-              br
-              label(for="password") Choose a password
-                br
-              -var cls = (err && err.password) ? 'error' : ''
-                input(type="password" name="password" class=cls placeholder="at least 6 characters long")
-              br
-              small.login Already have an account ? You can 
-                a(href="/login") <strong>Log In Here</strong>
-              br
-              br
-              input(type="submit" value="Sign Up Now!")
+          include includes/signup_form
 

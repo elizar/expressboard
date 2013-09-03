@@ -8,27 +8,27 @@ block content
           small.sub @!{ thread.owner.username } - 
           = thread.title
       .right
-        .menu
-          a(href="/threads/all") All Threads 
+        include ../includes/menu
     .content
-      hr
       .posts
+        - var i = 0
         - each post in posts
-          .post
-            !{ post.message }
-            - console.log(post)
-            p.sub Posted on <b>!{post.createdAt.toLocaleDateString()}</b> By <b>!{post.owner.username}</b>
+          - var offset = (i % 2 === 0 )? 'offset' : ''
+          .post(class=offset)
+            | !{post.message.replace(/\r\n/g,'\n').replace(/\n/g,'<br/>')}
+            hr
+            small.sub Posted on <b>!{post.createdAt.toLocaleDateString()}</b> By <b>!{post.owner.username}</b>
+          - i++
     .content
-      hr
+      h3 Reply to this thread as - <span class="sub">@!{user.username}</span>
       -if (errorFlash && errorFlash.length > 0)
+        br
         p.error=errorFlash[0]
       -if (infoFlash && infoFlash.length > 0)
-        p.success=infoFlash[0]
         br
+        p.success=infoFlash[0]
       br
-      h3 Reply to this thread as - <span class="sub">@!{user.username}</span>
-      br
-      form(action=url, method='POST', id='form')
+      form(action=url.replace('#form', ''), method='POST', id='form')
         input(type='hidden', value=thread._id, name='_id')
         textarea(name='message', rows='10')
         input(type='submit', name='submit' value='Post Reply')

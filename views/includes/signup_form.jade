@@ -1,0 +1,19 @@
+form(action="/signup" method="POST" id="signup-form")
+  .credentials
+    label(for="username")  Choose a username
+      br
+      input(type="text" name="username" class=errUsername )
+    br
+    label(for="email")  Enter your email address
+      br
+      input(type="text" name="email" class=errEmail )
+    br
+    label(for="password") Choose a password
+      br
+      input(type="password" name="password" class=errPassword )
+    br
+    small.login Already have an account ? You can 
+      a(href="/login") <strong>Log In Here</strong>
+    br
+    br
+    input(type="submit" value="Sign Up Now!")

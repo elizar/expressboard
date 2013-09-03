@@ -23,40 +23,25 @@ block content
       .right.span6
         .signup-home
           h2 Sign Up
+          hr
+          - console.log(errorFlash)
           -if (errorFlash.length > 0)
             -if (errorFlash[0].name === 'MongoError')
               -var errUsername='error'
               -var errEmail='error'
-              -var errPassword='error'
+              p.error <b>Username</b> or <b>Email</b> is already taken. Please try again.
               br
-              p.error Username or Email is taken.
             -else
-              -if (errorFlash[0].errors.username)
+              -if (errorFlash[0].errors.username) 
+                - console.log(errorFlash[0].errors.username)
                 -var errUsername='error'
               -if (errorFlash[0].errors.email)
+                - console.log(errorFlash[0].errors.email)
                 -var errEmail='error'
               -if (errorFlash[0].errors.password)
+                - console.log(errorFlash[0].errors.password)
                 -var errPassword='error'
-                br
-                p.error Sign Up Problem! Review all the fields in red and try again.
+              p.error <b>Sign Up Problem</b> Review all the fields in red and try again.
+              br
             -var err = errorFlash[0].errors
-          hr
-          form(action="/signup" method="POST" id="signup-form")
-            .credentials
-              label(for="username")  Choose a username
-                br
-                input(type="text" name="username" class=errUsername placeholder="i.e: beepboop")
-              br
-              label(for="email")  Enter your email address
-                br
-                input(type="text" name="email" class=errEmail placeholder="me@you.com")
-              br
-              label(for="password") Choose a password
-                br
-                input(type="password" name="password" class=errPassword placeholder="at least 6 characters long")
-              br
-              small.login Already have an account ? You can 
-                a(href="/login") <strong>Log In Here</strong>
-              br
-              br
-              input(type="submit" value="Sign Up Now!")
+          include includes/signup_form

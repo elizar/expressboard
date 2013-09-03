@@ -1,11 +1,17 @@
 doctype 5
 html
   head
-    title=' Express Board | '+ title
+    title=' [EB] | '+ title
     link(rel='icon', type="image/ico", href='/images/favicon.ico')
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(href='http://fonts.googleapis.com/css?family=Trykker', rel='stylesheet', type='text/css')
   body
+    if (url === '/')
+      .info
+        - if (errorFlash && errorFlash.length > 0)
+          .error !{errorFlash[0]}
+        - else if (successFlash && successFlash.length > 0)
+          .success !{successFlash[0]}
     header.container
       .left
         .logo
@@ -24,5 +30,5 @@ html
             span.sub  | 
             a(href="/logout") Log Out
     block content
-  #footer.footer
-    p &copy; 2013 - 2014 <a href="http://elizarpepino.com">Elizar Pepino.</a> All rights reserved.
+    #footer.footer
+      p &copy; 2013 - 2014 <a href="http://elizarpepino.com">Elizar Pepino.</a> All rights reserved.

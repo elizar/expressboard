@@ -7,7 +7,18 @@
 body {
     font: normal 95%/150%"Lucida Grande", Helvetica, Arial, sans-serif;
     font-size: 14px;
-    background-color: #efefef;
+    background-color: #7e7ea5;
+}
+.info {
+    width: 100%;
+    position: fixed;
+    z-index: 10000;
+    text-align: center;
+}
+.info .success, .info .error {
+    margin: 0 auto;
+    width: 400px;
+    font-weight: bold;
 }
 p{
     line-height: 1.5em;
@@ -92,7 +103,7 @@ label small {
 
 header.container {
     padding-bottom: 1.5em;
-    background-color: #eeeeff;
+    background-color: #fcfcff;
     border-bottom: 1px solid #aaa;
 }
 .error {
@@ -134,7 +145,7 @@ header.container {
 .menu a:hover {
     color: #111;
     text-decoration: none;
-    background-color: #ffffff;
+    background-color: #fcfcff;
 }
 .menu a.active {
     color: #111;
@@ -154,15 +165,15 @@ header.container {
     padding-top: 3em;
     padding-bottom: 3em;
     padding-left: 30px;
-    border-top: 1px solid #aaa;
+    border-top: 1px solid #4c4c80;
 }
 .footer p {
-    color: #111;
+    color: #efefef;
     font-size: .9em;
 }
 .footer a {
     font-weight: bold;
-    color: #333;
+    color: #fff;
     margin-left: 5px;
     margin-right: 5px;
 }
@@ -189,7 +200,6 @@ header.container {
     padding-bottom: 1em;
 }
 .threads .thread, .posts .post {
-    margin-bottom: 10px;
     padding-left: 10px;
 }
 .threads .thread {
@@ -198,24 +208,31 @@ header.container {
 }
 .posts {
     margin: 0;
-    font-size: 13px;
     list-style-type: none;
+    border: 1px solid #efefef;
+}
+.post hr {
+    margin-bottom: 5px;
+    margin-top: 2em;
 }
 .posts .post {
-    margin-top: 1em;
-    padding-bottom: 1em;
+    font-size: 1.1em;
+    padding-bottom: 7px;
     padding-top: 1em;
-    border-bottom: 2px solid #ddd;
-    background-color: #efefef;
+    background-color: #fff;
+    border-bottom: 1px solid #efefef;
+}
+.posts > .offset {
+    background-color: #fcfcff;
 }
 .posts hr {
     background-color: #eee;
 }
 .posts a {
-    color: #555;
+    color: #888;
 }
 .posts b {
-    color: #555;
+    color: #888;
 }
 .posts p.sub {
     margin-top: 1em;
