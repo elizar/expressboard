@@ -77,11 +77,16 @@ exports.newthread = function(req, res) {
     res.redirect('/login');
     return;
   }
+  
+  if (req.body.title.trim() === '' || req.body.description.trim() === '') {
+    req.flash('error', 'Problem processing your request. Please try again');
+    res.redirect(req.url);
+    return;
+  }
 
-  var title = req.body.title;
+  var title = req.body.title.trim();
   var threadData = {};
   threadData.title = title;
-  threadData.slug = title.toLowerCase().split(' ').join('-');
   threadData.owner = req.user._id;
 
   var thread = new models.Thread(threadData);
@@ -96,6 +101,7 @@ exports.newthread = function(req, res) {
       owner: req.user._id,
       thread: thread._id
     };
+    console.log(postData);
     var p = new models.Post(postData);
     p.save(function(err, post) {
       if (!err) {

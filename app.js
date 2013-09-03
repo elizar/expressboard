@@ -11,7 +11,7 @@ var express   = require('express'),
     http      = require('http'),
     path      = require('path'),
     flash     = require('connect-flash'),
-    mongoUrl  = process.env.MONGOHQ_URL || 'mongodb://localhost/kjagsd';
+    mongoUrl  = process.env.MONGOHQ_URL || 'mongodb://localhost/dummydb';
 
 /** DB STUFFS **/
 var mongoose = require('mongoose').connect(mongoUrl);
