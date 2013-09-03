@@ -212,6 +212,7 @@ header.container {
 .threads .thread {
     border-bottom: 1px solid #eee;
     padding-bottom: 1em;
+    padding-top: 1em;
 }
 .posts {
     margin: 0;
@@ -224,8 +225,8 @@ header.container {
 }
 .posts .post {
     font-size: 1.1em;
+    padding: 2em;
     padding-bottom: 7px;
-    padding-top: 1em;
     background-color: #fff;
     border-bottom: 1px solid #efefef;
 }
