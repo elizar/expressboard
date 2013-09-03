@@ -23,17 +23,20 @@ body {
 p{
     line-height: 1.5em;
 }
-h1, h2, h3, h4 {
-    opacity: 0.7;
+h1 {
     line-height: 1.5em;
-    font-family: "Trykker", "Lucida Grande";
+    font-family: "Trykker", serif;    
+}
+h2, h3, h4 {
+    line-height: 1.5em;
+    font-family: "Quattrocento", "Lucida Grande";
 }
 nav {
     color: #333111;
 }
 nav a {
     text-decoration: underline;
-    color: #5555ff;
+    color: #9898bf;
     padding: 4px 5px;
 }
 nav a:hover {
@@ -47,7 +50,7 @@ hr {
     margin-top: 1em;
 }
 a {
-    color: blue;
+    color: #454596;
     text-decoration: none;
 }
 a:hover {
@@ -198,6 +201,9 @@ header.container {
 .content {
     margin: 30px;
     padding-bottom: 1em;
+}
+.content h1, .content h2, .content h3 {
+    font-weight: normal;
 }
 .threads .thread, .posts .post {
     padding-left: 10px;
