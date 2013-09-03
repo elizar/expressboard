@@ -28,6 +28,7 @@ h1 {
     font-family: "Trykker", serif;    
 }
 h2, h3, h4 {
+    font-weight: normal;
     line-height: 1.5em;
     font-family: "Quattrocento", "Lucida Grande";
 }
