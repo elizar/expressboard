@@ -7,7 +7,7 @@ block content
         -if (threads.length < 1)
           h2 There are no threads here. Click <a href="/threads/new">here</a> to add one.
         -else
-          h2 All Threads ( <strong>#{threads.length}</strong> )
+          h2 All threads ( <strong>#{threads.length}</strong> )
       .right
         include ../includes/menu
     .content
@@ -17,17 +17,4 @@ block content
       -if (infoFlash && infoFlash.length > 0)
         p.success=infoFlash[0]
         br
-      .threads
-        -var i = threads.length
-        -while(i--)
-          .thread 
-            h2
-              -var _url = href=url.replace('#form', '') +'/'+ threads[i].slug
-              -_url = _url.replace('/all','')
-              -_url = _url.replace('//','/')
-              a(href=_url) #{threads[i].title}
-            -var date = threads[i].createdAt.toDateString() + ' ' + threads[i].createdAt.toLocaleTimeString()
-            -var postsCount = threads[i].posts.length
-            -var author = threads[i].owner.username
-            small.sub <i>published : </i> <b>#{date}</b>  |  <i>posts : </i> <b>#{postsCount}</b> | <i>author : </i> <b>#{author}</b>
-
+      include ../includes/threads

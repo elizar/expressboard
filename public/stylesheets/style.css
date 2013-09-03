@@ -165,6 +165,9 @@ header.container {
 .welcome-home {
     padding: 30px;
 }
+.borderleft {
+  border-left: 1px dashed #aaa;
+}
 .footer {
     padding-top: 3em;
     padding-bottom: 3em;

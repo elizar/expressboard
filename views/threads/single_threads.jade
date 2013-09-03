@@ -4,12 +4,14 @@ block content
   #container.container
     .content
       .left
-        h2 
-          small.sub @!{ thread.owner.username } - 
-          = thread.title
       .right
         include ../includes/menu
     .content
+      hr
+      h2 
+        small.sub @!{ thread.owner.username } - 
+        = thread.title
+      br
       .posts
         - var i = 0
         - each post in posts

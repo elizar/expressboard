@@ -1,0 +1,12 @@
+.threads
+  -each thread in threads.reverse()
+    .thread 
+      h2
+         - var slug = url.replace('#form', '') +'/'+ thread.slug
+         - var _url = slug.replace('//', '/')
+         a(href=_url) !{thread.title}
+      - var date = thread.createdAt.toDateString() + ' ' + thread.createdAt.toLocaleTimeString()
+      - var postsCount = thread.posts.length
+      - var author = thread.owner.username
+      br
+      p.sub Published Date: <b>!{date}</b>  |  Total Posts: <b>!{postsCount}</b>

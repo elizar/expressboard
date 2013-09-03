@@ -11,7 +11,7 @@ var express   = require('express'),
     http      = require('http'),
     path      = require('path'),
     flash     = require('connect-flash'),
-    mongoUrl  = process.env.MONGOHQ_URL || 'mongodb://localhost/dummydb';
+    mongoUrl  = process.env.MONGOHQ_URL || 'mongodb://localhost/expressboard';
 
 /** DB STUFFS **/
 var mongoose = require('mongoose').connect(mongoUrl);
@@ -110,6 +110,7 @@ app.get('/logout', function(req, res) {
 
 // Profile routes
 app.get('/profile', profile.get);
+app.post('/profile', profile.post);
 
 // Board routes
 app.get('/threads', threads.get);

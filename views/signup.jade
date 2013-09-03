@@ -26,7 +26,6 @@ block content
         .signup-home
           h2 Sign Up
           hr
-          - console.log(errorFlash)
           -if (errorFlash.length > 0)
             -if (errorFlash[0].name === 'MongoError')
               -var errUsername='error'

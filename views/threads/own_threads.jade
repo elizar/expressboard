@@ -17,17 +17,7 @@ block content
       -if (infoFlash && infoFlash.length > 0)
         p.success=infoFlash[0]
         br
-      .threads
-        -each thread in threads.reverse()
-          .thread 
-            h2
-               - var slug = url.replace('#form', '') +'/'+ thread.slug
-               - var _url = slug.replace('//', '/')
-               a(href=_url) !{thread.title}
-            - var date = thread.createdAt.toDateString() + ' ' + thread.createdAt.toLocaleTimeString()
-            - var postsCount = thread.posts.length
-            - var author = thread.owner.username
-            small.sub <i>published : </i> <b>!{date}</b>  |  <i>posts : </i> <b>!{postsCount}</b>
+      include ../includes/threads
     .content
       -if (posts.length < 1)
         h2 You currently have no posts.
