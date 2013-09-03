@@ -119,6 +119,10 @@ app.post('/threads/:thread', threads.newpost);
 app.get('/threads/new', threads.new);
 app.post('/threads/new', threads.newthread);
 
+// blitz.io related route
+app.get('/mu-39e0351c-3b288830-9fbeae27-30d8ed87', function(req, res) {
+  res.end('Beep Boop');
+});
 // Catch not found page with wildcard route
 app.get('/:notfound', routes.notfound);
 
