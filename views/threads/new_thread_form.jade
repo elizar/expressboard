@@ -2,20 +2,22 @@ extends ../layout
 
 block content
   #container.container
-    .content
-      .left
-        h2 Create New Thread
-      .right
-        include ../includes/menu
-    .content
-      hr
-      -if (errorFlash && errorFlash.length > 0)
-        p.error Ohh Snap! Something is wrong, please try again.
-        br
-      form(action="/threads/new" method="POST" id="signup-form")
-        label(for="title") Choose a Title<br />
-        input(type="text", name="title")
-        label(for="description") <br />Write a description<br />
-        textarea(rows="10", name="description")
-        .submit
-          input(type="submit" value="Publish This Thread")
+    .wrapper
+      .content
+        .left
+          h2 Create New Thread
+        .right
+          include ../includes/menu
+      .content
+        hr
+        -if (errorFlash && errorFlash.length > 0)
+          p.error Ohh Snap! Something is wrong, please try again.
+        br  
+        form(action="/threads/new" method="POST" id="signup-form")
+          label(for="title") Choose a Title<br />
+          input(type="text", name="title")
+          label(for="description") <br />Write a description<br />
+          textarea(rows="10", name="description")
+          .submit
+            input(type="submit" value="Publish This Thread")
+        em.sub * No HTML tags is allowed, you may use <b>markdown</b> to format you text

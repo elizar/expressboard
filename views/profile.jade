@@ -3,29 +3,30 @@ extends layout
 block content
   #content.container
   #content.container
-    .left.span6
-      .welcome-home
-        h2 User Profile
-        hr
-        p.sub USERNAME
-        h3= user.username
-        br
-        p.sub EMAIL
-        h3= user.email
-        br
-        p.sub FIRST NAME
-        h3= user.firstname || 'No name specified'
-        br
-        p.sub LAST NAME
-        h3= user.lastname || 'No last name specified'
-    .right.span6
-      .welcome-home.borderleft
-        h2 Change Password
-        hr
-        - if (errorFlash && errorFlash.length > 0)
-          p.error= errorFlash[0]
+    .wrapper
+      .left.span6
+        .welcome-home
+          h2 User Profile
+          hr
+          p.sub USERNAME
+          h3= user.username
           br
-        - if (infoFlash && infoFlash.length > 0)
-          p.success= infoFlash[0]
+          p.sub EMAIL
+          h3= user.email
           br
-        include includes/change_password_form.jade
+          p.sub FIRST NAME
+          h3= user.firstname || 'No name specified'
+          br
+          p.sub LAST NAME
+          h3= user.lastname || 'No last name specified'
+      .right.span6
+        .welcome-home.borderleft
+          h2 Change Password
+          hr
+          - if (errorFlash && errorFlash.length > 0)
+            p.error= errorFlash[0]
+            br
+          - if (infoFlash && infoFlash.length > 0)
+            p.success= infoFlash[0]
+            br
+          include includes/change_password_form.jade

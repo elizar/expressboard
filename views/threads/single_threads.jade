@@ -2,38 +2,39 @@ extends ../layout
 
 block content
   #container.container
-    .content
-      .left
-      .right
-        include ../includes/menu
-    .content
-      hr
-      h2 
-        small.sub @!{ thread.owner.username } - 
-        = thread.title
-      br
-      .posts
-        - var i = 0
-        - each post in posts
-          - var offset = (i % 2 === 0 )? 'offset' : ''
-          .post(class=offset)
-            | !{post.message.replace(/\r\n/g,'\n').replace(/\n/g,'<br/>')}
-            hr
-            small.sub Posted on <b>!{post.createdAt.toLocaleDateString()}</b> By <b>!{post.owner.username}</b>
-          - i++
-    .content
-      h3 Reply to this thread as - <span class="sub">@!{user.username}</span>
-      -if (errorFlash && errorFlash.length > 0)
+    article.wrapper
+      .content
+        .left
+        .right
+          include ../includes/menu
+      .content
+        hr
+        h1
+          small.sub @!{ thread.owner.username } - 
+          = thread.title
         br
-        p.error=errorFlash[0]
-      -if (infoFlash && infoFlash.length > 0)
+        .posts
+          - var i = 0
+          - each post in posts
+            - var offset = (i % 2 === 0 )? 'offset' : ''
+            .post(class=offset)
+              | !{post.message.replace(/\r\n/g,'\n').replace(/\n/g,'<br/>')}
+              hr
+              small.sub Posted on <b>!{post.createdAt.toLocaleDateString()}</b> By <b>!{post.owner.username}</b>
+            - i++
+      .content
+        h3 Reply to this thread as - <span class="sub">@!{user.username}</span>
+        -if (errorFlash && errorFlash.length > 0)
+          br
+          p.error=errorFlash[0]
+        -if (infoFlash && infoFlash.length > 0)
+          br
+          p.success=infoFlash[0]
         br
-        p.success=infoFlash[0]
-      br
-      form(action=url.replace('#form', ''), method='POST', id='form')
-        input(type='hidden', value=thread._id, name='_id')
-        textarea(name='message', rows='10')
-        input(type='submit', name='submit' value='Post Reply')
+        form(action=url.replace('#form', ''), method='POST', id='form')
+          input(type='hidden', value=thread._id, name='_id')
+          textarea(name='message', rows='10')
+          input(type='submit', name='submit' value='Post Reply')
 
 
 

@@ -1,20 +1,24 @@
 extends layout
 
 block content
-
   #content.container
-    -if (!user)
-      .left.span6
-        .welcome-home
-          h2 <strong>Greetings!</strong>
-          br
-          p Hello and welcome to expressboard.
-          br
-          p.sub You can fork this project on <a href="https://github.com/elizar/expressboard"><strong> Github </strong></a>
-      .right.span6
-        .signup-home
-          h2 Don't have an account yet?
-          h4.sub Sign up now it's free!
-          hr
-          include includes/signup_form
+    .wrapper
+      -if (!user)
+        .left.span6
+          .welcome-home
+            h2 
+              strong
+                = ['Bonjour!', 'Hallo!', 'Salve!', '你好', 'はじめまして!'][Math.round(Math.random()*4)]
+            br
+            p Hello and welcome to expressboard. A simple message board app powered by node.js and the very awesome express web framework.
+            br
+            p Here
+            br
+            p.sub You can fork this project on <a href="https://github.com/elizar/expressboard"><strong> Github </strong></a>
+        .right.span6
+          .signup-home
+            h2 Don't have an account yet?
+            h4.sub Sign up now it's free!
+            hr
+            include includes/signup_form
 

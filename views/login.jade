@@ -2,31 +2,32 @@ extends layout
 
 block content
   #content.container
-    .left.span6
-      .welcome-home
-        h2 Log In
-        hr
-        -var cls = ''
-        -if (errorFlash && errorFlash.length > 0)
-          p.error=errorFlash[0]
-          -cls = 'error'
-          br
-        -if (infoFlash && infoFlash.length > 0)
-          p.success=infoFlash[0]
-        form(action="" method="POST" id="signup-form")
-          .credentials
-            label(for="username") Username 
+    .wrapper
+      .left.span6
+        .welcome-home
+          h2 Log In
+          hr
+          -var cls = ''
+          -if (errorFlash && errorFlash.length > 0)
+            p.error=errorFlash[0]
+            -cls = 'error'
+            br
+          -if (infoFlash && infoFlash.length > 0)
+            p.success=infoFlash[0]
+          form(action="" method="POST" id="signup-form")
+            .credentials
+              label(for="username") Username 
+                br
+                input(type="text" name="username" class=cls)
               br
-              input(type="text" name="username" class=cls)
-            br
-            label(for="password") Password 
+              label(for="password") Password 
+                br
+                input(type="password" name="password" class=cls)
+            small.forgot.sub 
               br
-              input(type="password" name="password" class=cls)
-          small.forgot.sub 
-            br
-            a(href="/login/password-reset") Forgot your password ?
-            span  / 
-            a(href="/signup") Create New Account
-          .submit
-            br
-            input(type="submit" value="Log In")
+              a(href="/login/password-reset") Forgot your password ?
+              span  / 
+              a(href="/signup") Create New Account
+            .submit
+              br
+              input(type="submit" value="Log In")

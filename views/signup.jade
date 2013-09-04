@@ -2,47 +2,48 @@ extends layout
 
 block content
   #content.container
-    -if (!user)
-      .left.span6
-        .welcome-home
-          h2 Third Party Signup <strong>( Coming Soon )</strong>
-          br
-          p.sub You can also sign-up using the other web services listed below:
-          br
-          hr
-          a(href="#") 
-            span Google+ 
-          span | 
-          a(href="#") 
-            span Facebook 
-          span | 
-          a(href="#") 
-            span Twitter 
-          span | 
-          a(href="#") 
-            span OpenID 
-          hr
-      .right.span6
-        .signup-home
-          h2 Sign Up
-          hr
-          -if (errorFlash.length > 0)
-            -if (errorFlash[0].name === 'MongoError')
-              -var errUsername='error'
-              -var errEmail='error'
-              p.error <b>Username</b> or <b>Email</b> is already taken. Please try again.
-              br
-            -else
-              -if (errorFlash[0].errors.username) 
-                - console.log(errorFlash[0].errors.username)
+    .wrapper
+      -if (!user)
+        .left.span6
+          .welcome-home
+            h2 Third Party Signup <strong>( Coming Soon )</strong>
+            br
+            p.sub You can also sign-up using the other web services listed below:
+            br
+            hr
+            a(href="#") 
+              span Google+ 
+            span | 
+            a(href="#") 
+              span Facebook 
+            span | 
+            a(href="#") 
+              span Twitter 
+            span | 
+            a(href="#") 
+              span OpenID 
+            hr
+        .right.span6
+          .signup-home
+            h2 Sign Up
+            hr
+            -if (errorFlash.length > 0)
+              -if (errorFlash[0].name === 'MongoError')
                 -var errUsername='error'
-              -if (errorFlash[0].errors.email)
-                - console.log(errorFlash[0].errors.email)
                 -var errEmail='error'
-              -if (errorFlash[0].errors.password)
-                - console.log(errorFlash[0].errors.password)
-                -var errPassword='error'
-              p.error <b>Sign Up Problem</b> Review all the fields in red and try again.
-              br
-            -var err = errorFlash[0].errors
-          include includes/signup_form
+                p.error <b>Username</b> or <b>Email</b> is already taken. Please try again.
+                br
+              -else
+                -if (errorFlash[0].errors.username) 
+                  - console.log(errorFlash[0].errors.username)
+                  -var errUsername='error'
+                -if (errorFlash[0].errors.email)
+                  - console.log(errorFlash[0].errors.email)
+                  -var errEmail='error'
+                -if (errorFlash[0].errors.password)
+                  - console.log(errorFlash[0].errors.password)
+                  -var errPassword='error'
+                p.error <b>Sign Up Problem</b> Review all the fields in red and try again.
+                br
+              -var err = errorFlash[0].errors
+            include includes/signup_form

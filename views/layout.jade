@@ -14,24 +14,26 @@ html
         - else if (successFlash && successFlash.length > 0)
           .success !{successFlash[0]}
     header.container
-      .left
-        .logo
-          h1 
-            a(href="/") Express Board
-          span.sub An awesome message board.
-      .right
-        nav.nav Welcome #{!user? 'Guest' : user.email} 
-          if (!user)
-            a(href="/signup") Sign Up
-            | | 
-            a(href="/login") Log In
-          else
-            span.sub  | 
-            a(href="/") Home 
-            span.sub  | 
-            a(href="/profile") View Profile
-            span.sub  | 
-            a(href="/logout") Log Out
+      .wrapper
+        .left
+          .logo
+            h1 
+              a(href="/") Express Board
+            span.sub An awesome message board.
+        .right
+          nav.nav Welcome #{!user? 'Guest' : user.email} 
+            if (!user)
+              a(href="/signup") Sign Up
+              | | 
+              a(href="/login") Log In
+            else
+              span.sub  | 
+              a(href="/") Home 
+              span.sub  | 
+              a(href="/profile") View Profile
+              span.sub  | 
+              a(href="/logout") Log Out
     block content
-    #footer.footer
-      p &copy; 2013 - 2014 <a href="http://elizarpepino.com">Elizar Pepino.</a> All rights reserved.
+    .wrapper
+      #footer.footer
+        p &copy; 2013 - 2014 <a href="http://elizarpepino.com">Elizar Pepino.</a> All rights reserved.
