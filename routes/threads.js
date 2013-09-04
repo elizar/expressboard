@@ -101,7 +101,6 @@ exports.newthread = function(req, res) {
       owner: req.user._id,
       thread: thread._id
     };
-    console.log(postData);
     var p = new models.Post(postData);
     p.save(function(err, post) {
       if (!err) {
@@ -175,9 +174,7 @@ exports.newpost = function(req, res, next) {
 
   var p = new models.Post(postData);
   p.save(function(err, post) {
-    console.log(err);
     if (!err) {
-      console.log(123);
       // Update user's posts sub documents
       req.user.updatePosts(post._id);
       // Update thread's post sub documents
@@ -189,7 +186,6 @@ exports.newpost = function(req, res, next) {
         }
       }, function(err, th) {
         if (!err) {
-          console.log('wadiwasi');
           req.flash('info', 'Post successfully added!');
           res.redirect(req.url+'#form');
         }
