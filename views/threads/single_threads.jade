@@ -15,7 +15,7 @@ block content
         br
         .posts
           - var i = 0
-          - each post in posts
+          - each post in thread.posts
             - var offset = (i % 2 === 0 )? 'offset' : ''
             .post(class=offset)
               | !{post.message.replace(/\r\n/g,'\n').replace(/\n/g,'<br/>')}

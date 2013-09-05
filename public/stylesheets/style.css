@@ -32,6 +32,9 @@ h1 {
     line-height: 1.5em;
     font-family: "Trykker", serif;    
 }
+form {
+    margin-bottom: 2em;
+}
 h2, h3, h4 {
     font-weight: normal;
     line-height: 1.5em;
@@ -143,23 +146,35 @@ header.container {
     position: relative;
     float: right;
 }
-.menu a {
-    padding: 4px 10px;
-    color: #777;
-    margin-left: 5px;
-    margin-right: 5px;
+.menu {
     border-radius: 3px;
-    border: 1px solid #aaa;
-    background-color: #efefef;
+    padding: 1px;
+}
+.menu a {
+    padding: 5px 20px;
+    color: #fff;
+    border: 1px solid #414172;
+    background-color: #ffa500;
+    font-weight: bold;
+}
+.menu a:first-child {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-right: none;
+}
+.menu a:last-child {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-left: none;
 }
 .menu a:hover {
-    color: #111;
+    color: #855600;
     text-decoration: none;
-    background-color: #fcfcff;
+    background-color: #ffdb9a;
 }
 .menu a.active {
-    color: #111;
-    background-color: #ffffff;
+    color: #855600;
+    background-color: #ffdb9a;
 }
 .sub {
     color: #999;
@@ -219,6 +234,9 @@ header.container {
 }
 .content h1, .content h2, .content h3 {
     font-weight: normal;
+}
+.threads {
+    margin-bottom: 2em;
 }
 .threads .thread, .posts .post {
     padding-left: 10px;

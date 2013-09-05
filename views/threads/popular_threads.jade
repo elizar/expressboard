@@ -1,0 +1,16 @@
+extends ../layout
+
+block content
+  #container.container
+    .wrapper
+      .content
+        .left
+          -if (threads.length < 1)
+            h2 There are currently no popular thread.
+          -else
+            h2 POPULAR THREADS
+        .right
+          include ../includes/menu
+      .content
+        hr
+        include ../includes/threads
