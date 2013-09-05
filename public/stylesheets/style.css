@@ -7,7 +7,7 @@
 body {
     font: normal 95%/150%"Lucida Grande", Helvetica, Arial, sans-serif;
     font-size: 14px;
-    background-color: #7e7ea5;
+    background-color: #414172;
 }
 .wrapper {
     margin: 0 auto;
@@ -38,15 +38,15 @@ h2, h3, h4 {
     font-family: "Quattrocento", "Lucida Grande";
 }
 nav {
-    color: #333111;
+    color: #414172;
 }
 nav a {
-    text-decoration: underline;
-    color: #9898bf;
+    color: #414172;
+    font-weight: bold;
     padding: 4px 5px;
 }
 nav a:hover {
-    color: #555;
+    color: #000;
 }
 hr {
     height: 1px;
@@ -78,6 +78,7 @@ input:focus, textarea:focus {
     outline: none;
     border: 1px solid blue;
     box-shadow: 0 2px 5px #ccc inset;
+    background-color: #fff;
 }
 input[type="text"], input[type="password"] {
     padding: 10px;
@@ -99,7 +100,7 @@ input[type="submit"]:hover {
 }
 input.error {
     border-color: #ffaaaa;
-    background-color: transparent;
+    background-color: #ffffff;
     color: inherit;
 }
 label {
@@ -112,7 +113,7 @@ label small {
 
 header.container {
     padding-bottom: 1.5em;
-    background-color: #fcfcff;
+    background-color: #e3e3f7;
     border-bottom: 1px solid #aaa;
 }
 .error {
@@ -132,7 +133,6 @@ header.container {
     position: relative;
     overflow: auto;
     text-align: left;
-    padding-bottom: 2em;
     background-color: #fff;
 }
 .left {
@@ -167,9 +167,10 @@ header.container {
 .latest-thread, .signup-home {
     border-left: 1px dashed #aaa;
     padding: 20px;
+    padding-bottom: 2em;
 }
 .welcome-home {
-    padding: 30px 30px 0 0;
+    padding: 30px 30px 2em 0;
 }
 .borderleft {
   border-left: 1px dashed #aaa;
@@ -177,10 +178,11 @@ header.container {
 .footer {
     padding-top: 3em;
     padding-bottom: 3em;
-    border-top: 1px solid #4c4c80;
+    overflow: auto;
+    border-top: 1px solid #414172;
 }
 .footer p {
-    color: #efefef;
+    color: #fff;
     font-size: .9em;
 }
 .footer a {
@@ -193,15 +195,18 @@ header.container {
     margin-top: 10px;
 }
 .logo a {
-    color: #333;
+    color: #414172;
 }
 .logo a:hover {
     text-decoration: none;
     color: #000;
 }
+.logo .sub {
+    color: #414172;
+}
 .nav {
     margin-top: 35px;
-    margin-right: 10px
+    margin-right: 10px;
 }
 .nav a {
     margin: 5px;
