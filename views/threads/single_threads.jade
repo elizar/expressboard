@@ -23,7 +23,7 @@ block content
               small.sub Posted on <b>!{post.createdAt.toLocaleDateString()}</b> By <b>!{post.owner.username}</b>
             - i++
       .content
-        h3 Reply to this thread as - <span class="sub">@!{user.username}</span>
+        h3 Reply to this thread as - <span class="sub">@!{post.user.username}</span>
         -if (errorFlash && errorFlash.length > 0)
           br
           p.error=errorFlash[0]
