@@ -15,7 +15,7 @@ block content
         br
         .posts
           - var i = 0
-          - each post in thread.posts
+          - each post in posts
             - var offset = (i % 2 === 0 )? 'offset' : ''
             .post(class=offset)
               | !{post.message.replace(/\r\n/g,'\n').replace(/\n/g,'<br/>')}
@@ -23,7 +23,7 @@ block content
               small.sub Posted on <b>!{post.createdAt.toLocaleDateString()}</b> By <b>!{post.owner.username}</b>
             - i++
       .content
-        h3 Reply to this thread as - <span class="sub">@!{post.owner.username}</span>
+        h3 Reply to this thread as - <span class="sub">@!{user.username}</span>
         -if (errorFlash && errorFlash.length > 0)
           br
           p.error=errorFlash[0]
