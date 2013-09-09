@@ -11,7 +11,7 @@ block content
             p.sub You can also sign-up using the other web services listed below:
             br
             hr
-            
+
         .right.span6
           .signup-home
             h2 Sign Up
@@ -24,13 +24,10 @@ block content
                 br
               -else
                 -if (errorFlash[0].errors.username) 
-                  - console.log(errorFlash[0].errors.username)
                   -var errUsername='error'
                 -if (errorFlash[0].errors.email)
-                  - console.log(errorFlash[0].errors.email)
                   -var errEmail='error'
                 -if (errorFlash[0].errors.password)
-                  - console.log(errorFlash[0].errors.password)
                   -var errPassword='error'
                 p.error <b>Sign Up Problem</b> Review all the fields in red and try again.
                 br
