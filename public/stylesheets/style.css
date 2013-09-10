@@ -238,9 +238,6 @@ header.container {
 .threads {
     margin-bottom: 2em;
 }
-.threads .thread, .posts .post {
-    padding-left: 10px;
-}
 .threads .thread {
     border-bottom: 1px solid #eee;
     padding-bottom: 1em;
@@ -249,24 +246,32 @@ header.container {
 .posts {
     margin: 0;
     list-style-type: none;
-    border: 1px solid #efefef;
+    border: 1px solid #aaa;
 }
 .post hr {
     margin-bottom: 5px;
     margin-top: 2em;
 }
 .posts .post {
+    color: #414172;
     font-size: 1.1em;
-    padding: 2em;
     padding-bottom: 7px;
-    background-color: #fff;
-    border-bottom: 1px solid #efefef;
+    border-bottom: 1px solid #aaa;
+}
+.posts > .post > .message {
+  padding: 1em;
+}
+.posts > .post > .sub {
+  margin-left: 1em;
 }
 .posts > .offset {
-    background-color: #fcfcff;
+    background-color: #efefef;
+}
+.posts > .offset:last-child {
+  border-bottom: none;
 }
 .posts hr {
-    background-color: #eee;
+    background-color: #ccc;
 }
 .posts a {
     color: #888;

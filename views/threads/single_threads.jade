@@ -18,7 +18,8 @@ block content
           - each post in posts
             - var offset = (i % 2 === 0 )? 'offset' : ''
             .post(class=offset)
-              | !{post.message.replace(/\r\n/g,'\n').replace(/\n/g,'<br/>')}
+              .message
+                | !{post.message.replace(/\r\n/g,'\n').replace(/\n/g,'<br/>')}
               hr
               small.sub Posted on <b>!{post.createdAt.toLocaleDateString()}</b> By <b>!{post.owner.username}</b>
             - i++
