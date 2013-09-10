@@ -5,12 +5,14 @@ block content
     article.wrapper
       .content
         .left
-        .right
           include ../includes/menu
+        .right
+          include ../includes/filter-menu
       .content
         hr
+        br
         h1
-          small.sub @!{ thread.owner.username } - 
+          small.sub @!{ thread.owner.username } > 
           = thread.title
         br
         .posts
@@ -21,17 +23,17 @@ block content
               .message
                 | !{post.message.replace(/\r\n/g,'\n').replace(/\n/g,'<br/>')}
               hr
-              small.sub Posted on <b>!{post.createdAt.toLocaleDateString()}</b> By <b>!{post.owner.username}</b>
+              -postOwner =  (post.owner.username === user.username) ? 'You' : post.owner.username
+                small.sub Posted on <b>!{post.createdAt.toLocaleDateString()}</b> By <b>!{postOwner}</b>
             - i++
       .content
-        h3 Reply to this thread as - <span class="sub">@!{user.username}</span>
+        h3 Reply to this thread as <span class="sub orange">@!{user.username}</span>
         -if (errorFlash && errorFlash.length > 0)
           br
           p.error=errorFlash[0]
         -if (infoFlash && infoFlash.length > 0)
           br
           p.success=infoFlash[0]
-        br
         form(action=url.replace('#form', ''), method='POST', id='form')
           input(type='hidden', value=thread._id, name='_id')
           textarea(name='message', rows='10')

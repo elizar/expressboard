@@ -4,9 +4,9 @@
       h1
          - var slug = url.replace('#form', '') +'/'+ thread.slug
          - var _url = slug.replace('//', '/').replace('/all','').replace('/popular','')
-         a(href=_url) !{thread.title}
+         small.sub @!{thread.owner.username} > 
+         a(href=_url) !{thread.title} 
+         small.sub [ !{thread.posts.length} replies ] 
       - var date = thread.createdAt.toDateString() + ' ' + thread.createdAt.toLocaleTimeString()
-      - var postsCount = thread.posts.length
       - var author = thread.owner.username
-      br
-      p.sub Published Date: <b>!{date}</b>  |  Total Posts: <b>!{postsCount}</b> | Owner: <b>!{thread.owner.username}</b>
+      p.sub Posted on <span class="date">!{date}</span>

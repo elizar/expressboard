@@ -5,12 +5,9 @@ block content
     .wrapper
       .content
         .left
-          -if (threads.length < 1)
-            h2 There are no threads here. Click <a href="/threads/new">here</a> to add one.
-          -else
-            h2 RECENT THREADS
-        .right
           include ../includes/menu
+        .right
+          include ../includes/filter-menu
       .content
         hr
         -if (errorFlash && errorFlash.length > 0)

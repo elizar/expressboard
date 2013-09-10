@@ -1,10 +1,5 @@
 .menu
-	-if (url.match(/^\/threads+(|\/|)$/))
-		-all = 'active'
-	a(href = "/threads", class=all) All 
-	-if (url.match(/popular+(|\/|)$/))
-		-popular = 'active'
-	a(href = "/threads/popular", class=popular) Popular 
-	-if (url.match(/new+(|\/|)$/))
-		-create = 'active'
-	a(href = "/threads/new", class=create) Create New Thread
+  -create = 'new '
+  -if (url.match(/new+(|\/|)$/))
+    -create += 'active'
+  a(href = "/threads/new", class=create)+ New Thread

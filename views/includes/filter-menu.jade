@@ -1,0 +1,7 @@
+.menu
+  -if (url.match(/^\/threads+(|\/|)$/))
+    -all = 'active'
+  a(href = "/threads", class=all) All 
+  -if (url.match(/popular+(|\/|)$/))
+    -popular = 'active'
+  a(href = "/threads/popular", class=popular) Popular 

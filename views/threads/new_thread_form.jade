@@ -7,16 +7,16 @@ block content
         .left
           h2 NEW THREAD
         .right
-          include ../includes/menu
+          include ../includes/filter-menu
       .content
         hr
         -if (errorFlash && errorFlash.length > 0)
           p.error Ohh Snap! Something is wrong, please try again.
-        br  
+          br
         form(action="/threads/new" method="POST" id="signup-form")
-          label(for="title") Choose a Title<br />
+          label(for="title") Title<br />
           input(type="text", name="title")
-          label(for="description") <br />Write a description<br />
+          label(for="description") <br /> Initial Post<br />
           textarea(rows="10", name="description")
           .submit
             input(type="submit" value="Publish This Thread")
