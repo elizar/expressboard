@@ -21,16 +21,16 @@ html
               a(href="/") Express Board
             span.sub An awesome message board.
         .right
-          nav.nav Welcome #{!user? 'Guest' : user.email} 
+          nav.nav Welcome ( #{!user? 'Guest' : user.username} ) 
             if (!user)
               a(href="/signup") Sign Up
               | | 
               a(href="/login") Log In
             else
               span.sub  | 
-              a(href="/") Home 
+              a(href="/") Main 
               span.sub  | 
-              a(href="/profile") View Profile
+              a(href="/profile") Account
               span.sub  | 
               a(href="/logout") Log Out
     block content
