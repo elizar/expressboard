@@ -6,8 +6,8 @@ var express = require('express'),
   routes = require('./routes'),
   signup = require('./routes/signup'),
   login = require('./routes/login'),
-  threads = require('./routes/threads'),
   profile = require('./routes/profile'),
+  threads = require('./routes/threads'),
   http = require('http'),
   path = require('path'),
   flash = require('connect-flash'),
@@ -115,12 +115,12 @@ app.get('/profile', profile.get);
 app.post('/profile', profile.post);
 
 // Board routes
-app.get('/threads', threads.get);
-app.get('/threads/popular', threads.popular);
-app.get('/threads/:thread', threads.single);
-app.post('/threads/:thread', threads.newpost);
-app.get('/threads/new', threads.new);
-app.post('/threads/new', threads.newthread);
+app.get('/threads', threads.getIndex);
+app.get('/threads/popular', threads.getPopular);
+app.get('/threads/:thread', threads.getSingle);
+app.post('/threads/:thread', threads.postSingle);
+app.get('/threads/new', threads.getNewThread);
+app.post('/threads/new', threads.postNewThread);
 
 // blitz.io related route
 app.get('/mu-39e0351c-3b288830-9fbeae27-30d8ed87', function (req, res) {
