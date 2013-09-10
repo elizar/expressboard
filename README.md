@@ -1,19 +1,43 @@
-# express-board
+## Description
 
-A message board based on express framework
+Express board is just a simple message board platform powered by [**node.js**](http://nodejs.org) and [**express**](http://expressjs.com/) web framework. It's pretty simple and no fancy ajax crap call, just pure page by page request and response. 
 
-## Usage
+The only `javascript` file use is Typekit's font loader.
 
-1. Install node.js with npm
-2. Run `$ npm install` to download dependencies
-3. Then `$ node app` to run the server
+### Dependencies
 
-## Credits
+- **Express** -  Web framework
+- **Jade** - Templating Engine
+- **Mongoose** - MongoDB Driver
+- **Passport** - Handles authentication
 
-  - [Elizar Pepino](http://github.com/elizar)
 
-## License
+### Setup
+
+- **Install MongoDB**
+  - ` $ brew install mongodb ` on **Mac**
+  - ` $ sudo apt-get install some-shits ` on **Ubuntu**
+  - ` $ sudo pacman -S this-shit ` on **ArchLinux**, or you do the ` $ yaourt ` something.
+  - and you already know how to do this shit on **Windows**
+
+- **Download and Run** 
+  - ` $ git clone https://github.com/elizar/expressboard.git && cd expressboard ` will download the app, and cd to the folder once done.
+  - ` $ mongod & ` to run mongodb daemon on the background
+  - ` $ npm install ` should download and install all the dependencies
+  - Now do ` $ node app.js ` to start the http server, and  then go ahead and visit this url in your browser ` http://localhost:3000 `
+
+### Credits
+
+- Code [ me ](http://github.com/elizar)
+- UI [ me ](http://github.com/elizar)
+- UX? [ me ](http://github.com/elizar)
+- other shits [ me ](http://github.com/elizar)
+
+
+*B.S: It took me two days to finish this f`in markdown*
+
+### License
 
 [The MIT License](http://opensource.org/licenses/MIT)
 
-Copyright (c) 2012-2013 Elizar Pepino <[http://elizarpepino.com/](http://elizarpepino.com/)>
+Copyright (c) 2012-2013 [ Elizar Pepino ](http://elizarpepino.com/)
