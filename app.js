@@ -71,7 +71,7 @@ app.configure(function () {
   app.use(express.methodOverride());
   app.use(express.cookieParser());
   app.use(express.session({
-    secret: 'beepboop'
+    secret: '9018f21e83ce46f3ea2e3b73e5d75ece75407df7'
   }));
   app.use(passport.initialize());
   app.use(passport.session());
