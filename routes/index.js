@@ -2,7 +2,7 @@
  * GET home page.
  */
 'use strict';
-exports.get = function(req, res) {
+exports.get = function (req, res) {
   if (req.user) {
     res.redirect('/threads');
   }
@@ -14,7 +14,7 @@ exports.get = function(req, res) {
     successFlash: req.flash('info')
   });
 };
-exports.notfound = function(req, res) {
+exports.notfound = function (req, res) {
   res.render('notfound', {
     title: 'Not Found!'
   });
