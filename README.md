@@ -1,6 +1,6 @@
 ## Description
 
-Express board is just a simple message board platform powered by [**node.js**](http://nodejs.org) and [**express**](http://expressjs.com/) web framework. It's pretty simple and no fancy ajax crap call, just pure page by page request and response. 
+Express board is just a simple message board platform powered by [**node.js**](http://nodejs.org) and [**express**](http://expressjs.com/) web framework. It's pretty simple and no fancy ajax call, just pure page by page request and response. 
 
 The only `javascript` file included is Typekit's font loader.
 
@@ -10,15 +10,15 @@ The only `javascript` file included is Typekit's font loader.
 - **Jade** - Templating Engine
 - **Mongoose** - Object Document Mapper
 - **Passport** - Handles authentication
+- **Connect-Flash** - Handles flash messaging for form submission
 
 
 ### Setup
 
 - **Install MongoDB**
   - ` $ brew install mongodb ` on **Mac**
-  - ` $ sudo apt-get install some-shits ` on **Ubuntu**
-  - ` $ sudo pacman -S this-shit ` on **ArchLinux**, or you do the ` $ yaourt ` something.
-  - and you already know how to do this shit on **Windows**
+  - ` $ sudo apt-get install mongodb ` on **Ubuntu**
+  - ` $ sudo pacman -S mongodb ` on **ArchLinux**, or you do the ` $ yaourt ` thing.
 
 - **Download and Run** 
   - ` $ git clone https://github.com/elizar/expressboard.git && cd expressboard ` will download the app, and cd to the folder once done.
@@ -30,11 +30,7 @@ The only `javascript` file included is Typekit's font loader.
 
 - Code [ me ](http://github.com/elizar)
 - UI [ me ](http://github.com/elizar)
-- UX? [ me ](http://github.com/elizar)
-- other shits [ me ](http://github.com/elizar)
 
-
-*B.S: It took me two days to finish this f`in markdown*
 
 ### License
 
