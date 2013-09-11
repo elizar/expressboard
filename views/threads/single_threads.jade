@@ -21,10 +21,15 @@ block content
             - var offset = (i % 2 === 0 )? 'offset' : ''
             .post(class=offset)
               .message
-                | !{post.message.replace(/\r\n/g,'\n').replace(/\n/g,'<br/>')}
+                .left.info
+                  - var hash = crypto.createHash('md5').update(post.owner.email.toLowerCase().trim()).digest('hex')
+                  img(src="http://www.gravatar.com/avatar/"+hash+"?d=monsterid")
+                  p.user
+                    b !{post.owner.username}
+                .right.data
+                  !{post.message.replace(/\r\n/g,'\n').replace(/\n/g,'<br/>')}
               hr
-              -postOwner =  (post.owner.username === user.username) ? 'You' : post.owner.username
-                small.sub Posted on <b>!{post.createdAt.toLocaleDateString()}</b> By <b>!{postOwner}</b>
+              small.sub Posted on <b>!{post.createdAt.toLocaleDateString()}</b>
             - i++
       .content
         h3 Reply to this thread as <span class="sub orange">@!{user.username}</span>

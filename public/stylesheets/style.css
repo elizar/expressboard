@@ -286,6 +286,32 @@ header.container {
     -webkit-margin-start: auto;
     -webkit-margin-end: auto;
 }
+.message {
+    overflow: auto;
+}
+.message .info {
+    border: 1px solid #aaa;
+    text-align: center;
+    width: 120px;
+    background-color: #efefef;
+}
+.offset .message .info {
+    background-color: #ffffff;
+}
+.message .info img {
+    margin-top: 1em;
+    border-radius: 200px;
+}
+.message .info .user {
+    margin-bottom: 1em;
+}
+.message .data {
+    width: 790px;
+}
+.info-box {
+    position: relative
+    height: 100%;
+}
 span.date {
   color: #414172;
 }
@@ -300,6 +326,10 @@ span.date {
 }
 .posts .sub {
     margin-top: 1em;
+}
+.message .info .user b{
+    color: #000;
+    opacity: 0.7;
 }
 /** SPAN **/
  .span12 {

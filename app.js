@@ -78,6 +78,7 @@ app.configure(function () {
   app.use(flash());
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
+  app.locals.crypto = require('crypto');
 });
 
 app.configure('development', function () {
@@ -126,6 +127,7 @@ app.post('/threads/new', threads.postNewThread);
 app.get('/mu-39e0351c-3b288830-9fbeae27-30d8ed87', function (req, res) {
   res.end('42');
 });
+
 // Catch not found page with wildcard route
 app.get('/:notfound', routes.notfound);
 
