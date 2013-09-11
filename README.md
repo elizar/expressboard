@@ -2,13 +2,13 @@
 
 Express board is just a simple message board platform powered by [**node.js**](http://nodejs.org) and [**express**](http://expressjs.com/) web framework. It's pretty simple and no fancy ajax crap call, just pure page by page request and response. 
 
-The only `javascript` file use is Typekit's font loader.
+The only `javascript` file included is Typekit's font loader.
 
 ### Dependencies
 
 - **Express** -  Web framework
 - **Jade** - Templating Engine
-- **Mongoose** - MongoDB Driver
+- **Mongoose** - Object Document Mapper
 - **Passport** - Handles authentication
 
 
