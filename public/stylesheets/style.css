@@ -386,6 +386,17 @@ header.container {
     height: 100%;
 }
 
+.details {
+    color: #414172;
+    opacity: 0.8;
+}
+
+.total {
+    background-color: #efefef;
+    border-bottom: 1px solid #ccc;
+    padding: 0px 3px;
+}
+
 .date {
     color: #414172;
 }
