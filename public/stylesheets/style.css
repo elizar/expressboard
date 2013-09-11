@@ -4,72 +4,88 @@
     border: none;
     outline: none;
 }
+
 body {
     font: normal 95%/150%"Lucida Grande", Helvetica, Arial, sans-serif;
     font-size: 14px;
     background-color: #414172;
 }
+
 .wrapper {
     margin: 0 auto;
     width: 960px;
     overflow: auto;
 }
+
 .info {
     width: 100%;
     position: fixed;
     z-index: 10000;
     text-align: center;
 }
+
 .info .success, .info .error {
     margin: 0 auto;
     width: 400px;
     font-weight: bold;
 }
-p{
+
+p {
     line-height: 1.5em;
 }
+
 h1 {
     line-height: 1.5em;
-    font-family: "Trykker", serif;    
+    font-family: "Trykker", serif;
 }
+
 form {
     margin-top: 2em;
     margin-bottom: 2em;
 }
+
 h2, h3, h4 {
     font-weight: normal;
     line-height: 1.5em;
     font-family: "Quattrocento", "Lucida Grande";
 }
+
 nav {
     color: #414172;
 }
+
 nav a {
     color: #414172;
     font-weight: bold;
     padding: 4px 5px;
 }
+
 nav a:hover {
     color: #000;
 }
+
 hr {
     height: 1px;
     border: none;
     background-color: #efefef;
     margin-top: 1em;
 }
+
 a {
     color: #454596;
     text-decoration: none;
 }
+
 a:hover {
     color: darkblue;
     text-decoration: underline;
 }
+
 textarea {
     width: 400px;
     padding: 10px;
 }
+
 input, textarea {
     font-size: 14px;
     margin-bottom: 10px;
@@ -77,16 +93,19 @@ input, textarea {
     margin-top: .5em;
     box-shadow: 0 2px 5px #efefef inset;
 }
+
 input:focus, textarea:focus {
     outline: none;
     border: 1px solid blue;
     box-shadow: 0 2px 5px #ccc inset;
     background-color: #fff;
 }
+
 input[type="text"], input[type="password"] {
     padding: 10px;
     width: 300px;
 }
+
 input[type="submit"] {
     padding: 12px;
     min-width: 100px;
@@ -96,19 +115,23 @@ input[type="submit"] {
     cursor: pointer;
     font-weight: bold;
     background-color: #eeeeff;
-    outline:2px solid #efefef;
+    outline: 2px solid #efefef;
 }
+
 input[type="submit"]:hover {
     background-color: #ccccff;
 }
+
 input.error {
     border-color: #ffaaaa;
     background-color: #ffffff;
     color: inherit;
 }
+
 label {
     font-weight: bold;
 }
+
 label small {
     font-weight: normal;
     color: #aaa;
@@ -119,18 +142,21 @@ header.container {
     background-color: #e3e3f7;
     border-bottom: 1px solid #aaa;
 }
+
 .error {
     border: 1px solid #ffaaaa;
     color: red;
     background-color: #ffeeee;
     padding: 10px;
 }
+
 .success {
     color: darkgreen;
     border: 1px solid green;
     background-color: lightgreen;
     padding: 10px;
 }
+
 .container {
     width: 100%;
     position: relative;
@@ -138,18 +164,22 @@ header.container {
     text-align: left;
     background-color: #fff;
 }
+
 .left {
     position: relative;
     float: left;
 }
+
 .right {
     position: relative;
     float: right;
 }
+
 .menu {
     border-radius: 3px;
     padding: 1px;
 }
+
 .menu a {
     padding: 5px 20px;
     /*color: #fff;*/
@@ -158,210 +188,269 @@ header.container {
     background-color: #ffa500;
     font-weight: bold;
 }
+
 .menu a:first-child {
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
 }
+
 .menu a:last-child {
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
     border-left: none;
 }
+
 .menu a.new {
-  border: 1px solid #414172;
-  background-color: #e3e3f7;
-  color: #414172;
+    border: 1px solid #414172;
+    background-color: #e3e3f7;
+    color: #414172;
 }
+
 .menu a.new:hover {
-  background-color: #414172;
-  color: #e3e3f7;
+    background-color: #414172;
+    color: #e3e3f7;
 }
+
 .menu a:hover {
     text-decoration: none;
     background-color: #ffdb9a;
 }
+
 .menu a.active {
     color: #855600;
     background-color: #ffdb9a;
 }
+
 .sub {
     color: #999;
 }
+
 .latest-thread, .signup-home {
     border-left: 1px dashed #aaa;
     padding: 20px;
     padding-bottom: 2em;
 }
+
 .welcome-home {
     padding: 30px 30px 2em 0;
 }
+
 .borderleft {
-  border-left: 1px dashed #aaa;
+    border-left: 1px dashed #aaa;
 }
+
 .footer {
     padding-top: 3em;
     padding-bottom: 3em;
     overflow: auto;
     border-top: 1px solid #414172;
 }
+
 .footer p {
     color: #fff;
     font-size: .9em;
 }
+
 .footer a {
     font-weight: bold;
     color: #fff;
     margin-left: 5px;
     margin-right: 5px;
 }
+
 .logo {
     margin-top: 10px;
 }
+
 .logo a {
     color: #414172;
 }
+
 .logo a:hover {
     text-decoration: none;
     color: #000;
 }
+
 .logo .sub {
     color: #414172;
 }
+
 .nav {
     margin-top: 35px;
     margin-right: 10px;
 }
+
 .nav a {
     margin: 5px;
 }
+
 .content {
     margin-top: 10px;
     padding-bottom: 4px;
     padding-top: 1em;
     overflow: visible;
 }
+
 .content h1, .content h2, .content h3 {
     font-weight: normal;
 }
+
 .threads {
     margin-bottom: 2em;
 }
+
 .threads .thread {
     border-bottom: 1px solid #eee;
     padding-bottom: 1em;
     padding-top: 1em;
 }
+
 .posts {
     margin: 0;
     list-style-type: none;
     border: 1px solid #aaa;
 }
+
 .post hr {
     margin-bottom: 5px;
 }
+
 .posts .post {
     color: #333;
     font-size: 1.1em;
     padding-bottom: 7px;
     border-bottom: 1px solid #aaa;
 }
+
 .posts > .post:last-child {
-  border-bottom: none;
+    border-bottom: none;
 }
+
 .posts > .post > .message {
-  padding: 1em;
+    padding: 1em;
 }
+
 .posts > .post > .sub {
-  display: block;
-  margin-left: 1em;
-  margin-top: 0.7em;
+    display: block;
+    margin-left: 1em;
+    margin-top: 0.7em;
 }
+
 .posts > .offset {
     background-color: #efefef;
 }
+
 .posts hr {
     background-color: #ccc;
     -webkit-margin-before: 0;
     -webkit-margin-after: 0;
     -webkit-margin-start: auto;
     -webkit-margin-end: auto;
+    -moz-margin-before: 0;
+    -moz-margin-after: 0;
+    -moz-margin-start: auto;
+    -moz-margin-end: auto;
 }
+
 .message {
     overflow: auto;
 }
+
 .message .info {
-    border: 1px solid #aaa;
     text-align: center;
     width: 120px;
-    background-color: #efefef;
 }
-.offset .message .info {
-    background-color: #ffffff;
+
+.offset .message .info img {
+    border: 5px solid rgba(255, 255, 255, 0.7);
 }
+
 .message .info img {
+    width: 80px;
+    height: 80px;
     margin-top: 1em;
     border-radius: 200px;
+    border: 5px solid rgba(65, 65, 114, 0.1);
 }
+
 .message .info .user {
     margin-bottom: 1em;
 }
+
 .message .data {
     width: 790px;
 }
+
 .info-box {
-    position: relative
+    position: relative;
     height: 100%;
 }
-span.date {
-  color: #414172;
+
+.date {
+    color: #414172;
 }
+
 .orange {
-  color: orange;
+    color: orange;
 }
+
 .posts a {
     color: #888;
 }
+
 .posts b {
     color: #888;
 }
+
 .posts .sub {
     margin-top: 1em;
 }
-.message .info .user b{
+
+.message .info .user b {
     color: #000;
     opacity: 0.7;
 }
 /** SPAN **/
- .span12 {
+.span12 {
     width: 100%;
 }
+
 .span10 {
     width: 83%;
 }
+
 .span9 {
     width: 75%;
 }
+
 .span8 {
     width: 66%;
 }
+
 .span7 {
     width: 58%;
 }
+
 .span6 {
     width: 50%;
 }
+
 .span5 {
     width: 41%;
 }
+
 .span4 {
     width: 33%;
 }
+
 .span3 {
     width: 25%;
 }
+
 .span2 {
     width: 16%;
 }
+
 .span1 {
     width: 8%;
 }

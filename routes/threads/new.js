@@ -23,12 +23,6 @@ exports.post = function (req, res) {
     return;
   }
 
-  if (req.body.title.trim() === '' || req.body.description.trim() === '') {
-    req.flash('error', 'Problem processing your request. Please try again');
-    res.redirect(req.url);
-    return;
-  }
-
   var title = req.body.title.trim();
   var threadData = {};
   threadData.title = title;
@@ -56,6 +50,10 @@ exports.post = function (req, res) {
         req.user.updateThreads(thread._id);
         req.user.updatePosts(post._id);
         thread.updatePosts(post._id);
+      }
+      else {
+        req.flash('error', err);
+        res.redirect(req.url);
       }
     });
 

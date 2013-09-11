@@ -11,8 +11,12 @@ block content
       .content
         hr
         -if (errorFlash && errorFlash.length > 0)
-          p.error Ohh Snap! Something is wrong, please try again.
           br
+          - err = errorFlash[0].errors
+          - if (err.title) errorMessage = err.title.type
+          - else errorMessage = err.message.type
+          p.error= errorMessage
+
         form(action="/threads/new" method="POST" id="signup-form")
           label(for="title") Title<br />
           input(type="text", name="title")
