@@ -1,4 +1,7 @@
 .threads
+  -if (threads.length === 0)
+    section.thread
+      h1 No entry yet. Why don't you add one?
   -each thread in threads.reverse()
     section.thread 
       h1
