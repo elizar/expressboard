@@ -69,16 +69,13 @@ exports.post = function (req, res, next) {
       req.user.updatePosts(post._id);
 
       models.Thread.findOneAndUpdate(
-      { _id: req.body._id },
+      { _id: post.thread },
       { $push: { posts: post._id } },
-      
       function (err, th) {
-
         if (!err && th) {
           req.flash('info', 'Post successfully added!');
           res.redirect(req.url + '#form');
         }
-
       });
 
     } else {

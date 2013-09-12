@@ -1,7 +1,8 @@
 'use strict';
 
 var mongoose  = require('mongoose'),
-    models    = mongoose.models;
+    models    = mongoose.models,
+    async     = require('async');
 
 exports.get = function (req, res) {
   if (!req.user) {
@@ -33,26 +34,30 @@ exports.post = function (req, res) {
 
     if (err) {
       req.flash('error', err);
-      res.redirect('/threads/new');
-      return;
+      return res.redirect('/threads/new');
     }
 
-    var postData = {
-      message: req.body.description.trim(),
-      owner: req.user._id,
-      thread: thread._id
-    };
+    req.user.updateThreads(thread._id, function (err, results) {
 
-    var p = new models.Post(postData);
-
-    p.save(function (err, post) {
       if (!err) {
-        req.user.updateThreads(thread._id);
-        req.user.updatePosts(post._id);
-        thread.updatePosts(post._id);
+        var postData = {
+          message: req.body.description.trim(),
+          owner: req.user._id,
+          thread: thread._id
+        };
+        var p = new models.Post(postData);
+        p.save(function (err, post) {
+          if (!err) {
+            req.user.updatePosts(post._id, console.log);
+            thread.updatePosts(post._id, console.log);
+          }
+          else {
+            req.flash('error', 'Initial post not saved due to validation error.');
+          }
+        });
       }
       else {
-        req.flash('error', 'Initial post not saved due to validation error.');
+        req.flash('error', 'Thread was not added to users\'s thread pool due to some error');
       }
 
     });
