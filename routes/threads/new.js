@@ -52,9 +52,9 @@ exports.post = function (req, res) {
         thread.updatePosts(post._id);
       }
       else {
-        req.flash('error', err);
-        res.redirect(req.url);
+        req.flash('error', 'Initial post not saved due to validation error.');
       }
+
     });
 
     req.flash('info', 'Thread successfully added!');

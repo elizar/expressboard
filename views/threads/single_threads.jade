@@ -33,12 +33,12 @@ block content
             - i++
       .content
         h3 Reply to this thread as <span class="sub orange">@!{user.username}</span>
-        -if (errorFlash && errorFlash.length > 0)
-          br
-          p.error=errorFlash[0]
         -if (infoFlash && infoFlash.length > 0)
           br
           p.success=infoFlash[0]
+        -if (errorFlash && errorFlash.length > 0)
+          br
+          p.error=errorFlash[0]
         form(action=url.replace('#form', ''), method='POST', id='form')
           input(type='hidden', value=thread._id, name='_id')
           textarea(name='message', rows='10')

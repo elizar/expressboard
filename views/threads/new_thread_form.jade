@@ -18,10 +18,15 @@ block content
           p.error= errorMessage
 
         form(action="/threads/new" method="POST" id="signup-form")
-          label(for="title") Title<br />
+          label(for="title") Choose a Title<br />
           input(type="text", name="title")
-          label(for="description") <br /> Initial Post<br />
+          br
+          label(for="description") <br /> Initial Post ( Optional )<br />
           textarea(rows="10", name="description")
+          br
+          small
+            em.sub * HTML tag is not allowed, use <b>Markown</b>(soon) instead.
           .submit
+            br
             input(type="submit" value="Publish This Thread")
-            em.sub * No HTML tags is allowed, you may use <b>markdown</b> to format you text
+            br
