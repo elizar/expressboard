@@ -2,33 +2,26 @@
  * Module dependencies.
  */
 'use strict';
-var express = require('express'),
-  routes = require('./routes'),
-  signup = require('./routes/signup'),
-  login = require('./routes/login'),
-  profile = require('./routes/profile'),
-  threads = require('./routes/threads'),
-  http = require('http'),
-  path = require('path'),
-  flash = require('connect-flash'),
-  mongoUrl = process.env.MONGOHQ_URL || 'mongodb://localhost/ebdb';
+var express   = require('express'),
+    routes    = require('./routes'),
+    signup    = require('./routes/signup'),
+    login     = require('./routes/login'),
+    profile   = require('./routes/profile'),
+    threads   = require('./routes/threads'),
+    http      = require('http'),
+    path      = require('path'),
+    flash     = require('connect-flash'),
+    mongoUrl  = process.env.MONGOHQ_URL || 'mongodb://localhost/ebdb';
 
 /** DB STUFFS **/
-var mongoose = require('mongoose');
-mongoose.connect(mongoUrl);
+var mongoose = require('mongoose').connect(mongoUrl);
 var mongooseModels = require('./lib/models').init(),
-  User = mongooseModels.User;
+    User = mongooseModels.User;
 
-/** PASSPORT STUFFS **/
+/** SETUP PASSPORT ***/
 var passport = require('passport'),
-  passportLocal = require('passport-local').Strategy;
+    passportLocal = require('passport-local').Strategy;
 
-/** INIT APP **/
-var app = express();
-
-// Setup passport local strategy
-// Note: you can check if user is login by checking req.user
-// e.g: if(!req.user) res.redirect('/not-login') else res.redirect('/welcome-page')
 passport.use(new passportLocal(
   function (username, password, done) {
     User.findOne({
@@ -51,16 +44,18 @@ passport.use(new passportLocal(
     });
   }));
 
-//  Passport won't work without the following two methods 
-//  if Session is enabled
 passport.serializeUser(function (user, done) {
   done(null, user.id);
 });
+
 passport.deserializeUser(function (id, done) {
   User.findById(id, function (err, user) {
     done(err, user);
   });
 });
+
+/** INIT AND CONFIGURE APP **/
+var app = express();
 
 app.configure(function () {
   app.set('port', process.env.PORT || 3000);
@@ -86,36 +81,33 @@ app.configure('development', function () {
   app.locals.pretty = true;
 });
 
-/********************
- *   Routes Galore
- ********************/
-
-// Index routes
+/** ROUTES ET AL **/
+// Main
 app.get('/', routes.get);
 
-// Signup routes
+// Sign Up 
 app.get('/signup', signup.get);
 app.post('/signup', signup.post);
 
-// Login routes
+// Log In
 app.get('/login', login.get);
 app.get('/login/password-reset', function (req, res) {
   res.end('Not My Problem!'); // Humour me!
 });
 app.post('/login', login.post);
 
-// Logout routes
+// Logout 
 app.get('/logout', function (req, res) {
   req.logout();
   req.flash('info', 'You have successfully logged out!');
   res.redirect('/');
 });
 
-// Profile routes
+// Profile 
 app.get('/profile', profile.get);
 app.post('/profile', profile.post);
 
-// Board routes
+// Board 
 app.get('/threads', threads.getIndex);
 app.get('/threads/popular', threads.getPopular);
 app.get('/threads/:thread', threads.getSingle);
@@ -128,7 +120,7 @@ app.get('/mu-39e0351c-3b288830-9fbeae27-30d8ed87', function (req, res) {
   res.end('42');
 });
 
-// Catch not found page with wildcard route
+// Not Foun
 app.get('/:notfound', routes.notfound);
 
 /** START HTTP SERVER **/
