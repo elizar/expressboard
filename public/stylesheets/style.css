@@ -338,7 +338,17 @@ header.container {
   font-size: 12px;
 }
 
-.post p, .post h1, .post h2, .post blockquote {
+.post ul {
+  margin: 1em;
+}
+
+.post blockquote {
+  margin: 1em;
+  padding: 10px;
+  border-left 3px solid #aaa;
+}
+
+.post p, .post h1, .post h2, .post blockquote, .post pre {
   margin-bottom: 1em;
 }
 
