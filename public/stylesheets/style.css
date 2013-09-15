@@ -338,6 +338,10 @@ header.container {
   font-size: 12px;
 }
 
+.post p, .post h1, .post h2, .post blockquote {
+  margin-bottom: 1em;
+}
+
 pre > code {
   border-radius: 3px;
   font-family: Monaco, Consolas, "Ubuntu Mono", serif;
