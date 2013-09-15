@@ -11,6 +11,7 @@ var express   = require('express'),
     http      = require('http'),
     path      = require('path'),
     flash     = require('connect-flash'),
+    markdown  = require('markdown').markdown,
     mongoUrl  = process.env.MONGOHQ_URL || 'mongodb://localhost/ebdb';
 
 /** DB STUFFS **/
@@ -74,6 +75,7 @@ app.configure(function () {
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
   app.locals.crypto = require('crypto');
+  app.locals.markdown = markdown;
 });
 
 app.configure('development', function () {

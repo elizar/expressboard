@@ -12,7 +12,7 @@ block content
         hr
         br
         h1
-          small.sub @!{ thread.owner.username } &rang; 
+          small.sub @!{ thread.owner.username } &rang;
           = thread.title
         br
         .posts
@@ -26,8 +26,8 @@ block content
                   img(src="http://www.gravatar.com/avatar/"+hash+"?d=monsterid")
                   p.user
                     b !{post.owner.username}
-                .right.data
-                  !{post.message.replace(/\r\n/g,'\n').replace(/\n/g,'<br/>')}
+                .right.data!= markdown.toHTML(post.message)
+                  //-!{post.message.replace(/\r\n/g,'\n').replace(/\n/g,'<br/>')}
               hr
               small.sub Posted on <b>!{post.createdAt.toLocaleDateString()}</b>
             - i++
@@ -36,7 +36,6 @@ block content
         -if (infoFlash && infoFlash.length > 0)
           br
           p.success=infoFlash[0]
-        -console.log(errorFlash);
         -if (errorFlash && errorFlash.length > 0)
           br
           p.error=errorFlash[0]
@@ -44,7 +43,3 @@ block content
           input(type='hidden', value=thread._id, name='_id')
           textarea(name='message', rows='10')
           input(type='submit', name='submit' value='Post Reply')
-
-
-
-
