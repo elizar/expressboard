@@ -345,7 +345,9 @@ header.container {
 .post blockquote {
   margin: 1em;
   padding: 10px;
-  border-left 3px solid #aaa;
+  font-style: italic;
+  opacity: 0.7;
+  border-left: 3px solid #aaa;
 }
 
 .post p, .post h1, .post h2, .post blockquote, .post pre {
