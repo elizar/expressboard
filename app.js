@@ -11,8 +11,24 @@ var express   = require('express'),
     http      = require('http'),
     path      = require('path'),
     flash     = require('connect-flash'),
-    markdown  = require('markdown').markdown,
+    markdown  = require('marked'),
+    pygmentize = require('pygmentize-bundled'),
+    hljs      = require('highlight.js'),
     mongoUrl  = process.env.MONGOHQ_URL || 'mongodb://localhost/ebdb';
+
+    markdown.setOptions({
+      gfm: true,
+      highlight: function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      },
+      tables: true,
+      breaks: false,
+      pedantic: false,
+      sanitize: true,
+      smartLists: true,
+      smartypants: false,
+      langPrefix: 'lang-'
+    });
 
 /** DB STUFFS **/
 var mongoose = require('mongoose').connect(mongoUrl);
@@ -43,7 +59,7 @@ passport.use(new passportLocal(
       }
       return done(null, user);
     });
-  }));
+}));
 
 passport.serializeUser(function (user, done) {
   done(null, user.id);
@@ -87,7 +103,7 @@ app.configure('development', function () {
 // Main
 app.get('/', routes.get);
 
-// Sign Up 
+// Sign Up
 app.get('/signup', signup.get);
 app.post('/signup', signup.post);
 
@@ -98,18 +114,18 @@ app.get('/login/password-reset', function (req, res) {
 });
 app.post('/login', login.post);
 
-// Logout 
+// Logout
 app.get('/logout', function (req, res) {
   req.logout();
   req.flash('info', 'You have successfully logged out!');
   res.redirect('/');
 });
 
-// Profile 
+// Profile
 app.get('/profile', profile.get);
 app.post('/profile', profile.post);
 
-// Board 
+// Board
 app.get('/threads', threads.getIndex);
 app.get('/threads/popular', threads.getPopular);
 app.get('/threads/:thread', threads.getSingle);

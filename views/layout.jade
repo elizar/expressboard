@@ -4,6 +4,8 @@ html
     title='ExpressBoard - '+ title
     link(rel='icon', type="image/ico", href='/images/favicon.ico')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel="stylesheet" href="/stylesheets/tomorrow-night.css")
+    sctip(src="http://yandex.st/highlightjs/7.3/highlight.min.js")
     script(src="//use.typekit.net/ine7ean.js")
     script try{Typekit.load();}catch(e){}
   body
@@ -17,21 +19,21 @@ html
       .wrapper
         .left
           .logo
-            h1 
+            h1
               a(href="/") Express Board
             span.sub An awesome message board.
         .right
-          nav.nav Welcome ( #{!user? 'Guest' : user.username} ) 
+          nav.nav Welcome ( #{!user? 'Guest' : user.username} )
             if (!user)
               a(href="/signup") Sign Up
-              | | 
+              | |
               a(href="/login") Log In
             else
-              span.sub  | 
-              a(href="/") Main 
-              span.sub  | 
+              span.sub  |
+              a(href="/") Main
+              span.sub  |
               a(href="/profile") Account
-              span.sub  | 
+              span.sub  |
               a(href="/logout") Log Out
     block content
     .wrapper
@@ -40,5 +42,5 @@ html
           p &copy; 2013 - 2014 <a href="http://elizarpepino.com">Elizar Pepino.</a> All rights reserved.
         .right
           p
-            | Fork this project on 
+            | Fork this project on
             a(href="https://github.com/elizar/expressboard") Github

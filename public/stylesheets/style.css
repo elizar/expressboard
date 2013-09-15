@@ -330,6 +330,19 @@ header.container {
     padding: 1em;
 }
 
+.post > .message p > code {
+  background-color: #ccc;
+  border: 1px solid #bbb;
+  padding: 3px 4px;
+  border-radius: 2px;
+  font-size: 12px;
+}
+
+pre > code {
+  border-radius: 3px;
+  font-family: Monaco, Consolas, "Ubuntu Mono", serif;
+}
+
 .posts > .post > .sub {
     display: block;
     margin-left: 1em;

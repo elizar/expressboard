@@ -26,8 +26,7 @@ block content
                   img(src="http://www.gravatar.com/avatar/"+hash+"?d=monsterid")
                   p.user
                     b !{post.owner.username}
-                .right.data!= markdown.toHTML(post.message)
-                  //-!{post.message.replace(/\r\n/g,'\n').replace(/\n/g,'<br/>')}
+                .right.data!= markdown(post.message)
               hr
               small.sub Posted on <b>!{post.createdAt.toLocaleDateString()}</b>
             - i++
