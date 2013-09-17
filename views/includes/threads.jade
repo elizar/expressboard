@@ -7,7 +7,7 @@
       h1
          - var slug = url.replace('#form', '') +'/'+ thread.slug
          - var _url = slug.replace('//', '/').replace('/all','').replace('/popular','')
-         small.sub @!{thread.owner.username} &rang; 
+         small.sub @!{thread.owner.username} > 
          a(href=_url) !{thread.title} 
          //- small.sub [ !{thread.posts.length} replies ] 
       - var date = thread.createdAt.toDateString() + ' ' + thread.createdAt.toLocaleTimeString()
