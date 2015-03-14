@@ -1,5 +1,5 @@
 .menu
-  -create = 'new '
-  -if (url.match(/new+(|\/|)$/))
-    -create += 'active'
-  a(href = "/threads/new", class=create)+ New Thread
+	-create = 'new '
+	-if (url.match(/new+(|\/|)$/))
+		-create += 'active'
+	a(href = "/threads/new", class=create) New Thread
